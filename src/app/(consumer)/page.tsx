@@ -99,10 +99,12 @@ export default function ConsumerHomePage() {
         onOpenPrivacy={() => setIsPrivacyOpen(true)}
       />
 
-      {/* 2. Editorial Fashion Hero Section */}
-      <section className="relative w-full bg-[#FAFAF8] border-b border-neutral-200/80 py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
+      {/* ──────────────────────────────────────────────────────────────────────────
+          SECTION 01: HERO & LIVE TRUST LEDGER (Warm Gallery Ivory Canvas)
+      ────────────────────────────────────────────────────────────────────────── */}
+      <section id="hero" className="relative w-full bg-[#FAFAF8] py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
         <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 xl:gap-20">
-          {/* Hero Left Content — Editorial Presentation */}
+          {/* Hero Left Content — Editorial Typography */}
           <div className="flex-1 space-y-6 text-left">
             <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 bg-neutral-100 border border-neutral-200 px-3.5 py-1.5 rounded-md">
               <span className="font-bold text-neutral-900">01 /</span>
@@ -206,7 +208,7 @@ export default function ConsumerHomePage() {
           </div>
         </div>
 
-        {/* Live Metrics Trust Strip — Minimalist Editorial Style */}
+        {/* Live Metrics Trust Strip */}
         <div className="w-full mt-16 pt-10 border-t border-neutral-200/80 grid grid-cols-2 md:grid-cols-4 gap-8 text-left select-none">
           <div className="space-y-1">
             <span className="text-xs font-mono text-neutral-400 block">01 / RETAIL</span>
@@ -231,8 +233,27 @@ export default function ConsumerHomePage() {
         </div>
       </section>
 
-      {/* 3. Fluid Sizing Engine Canvas */}
-      <main id="sizing-engine" className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-14 sm:py-20 space-y-12">
+      {/* ──────────────────────────────────────────────────────────────────────────
+          CHAPTER RIBBON DIVIDER: SECTION 01 → SECTION 02
+      ────────────────────────────────────────────────────────────────────────── */}
+      <div className="w-full bg-neutral-100/80 border-y border-neutral-200 py-3.5 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-500 select-none">
+        <div className="flex items-center space-x-3">
+          <span className="w-2 h-2 bg-neutral-900 rounded-full" />
+          <span className="font-bold text-neutral-900">CHAPTER II</span>
+          <span className="text-neutral-300">/</span>
+          <span className="hidden sm:inline">DETERMINISTIC SIZING ENGINE</span>
+        </div>
+        <div className="flex items-center space-x-4 text-[11px]">
+          <span className="hidden md:inline text-neutral-400">CALIBRATED MARGIN MATRIX</span>
+          <span className="hidden md:inline text-neutral-300">•</span>
+          <span className="text-neutral-900 font-semibold">[ INPUT BENCH ]</span>
+        </div>
+      </div>
+
+      {/* ──────────────────────────────────────────────────────────────────────────
+          SECTION 02: SIZING CALCULATOR & EASE ENGINE (Pure Laboratory White Canvas)
+      ────────────────────────────────────────────────────────────────────────── */}
+      <main id="sizing-engine" className="w-full bg-white py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200/80 space-y-12">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-neutral-200 pb-6">
           <div>
             <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 mb-2">
@@ -263,8 +284,8 @@ export default function ConsumerHomePage() {
         {/* 12-Column Responsive Sizing Grid Spanning Full Width */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start w-full">
           {/* Left Column: Inputs & Interactive Visual Cut (5 cols) */}
-          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-neutral-200 shadow-sm space-y-6">
-            <h3 id="garment-input-heading" className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 pb-3 border-b border-neutral-100 flex items-center justify-between">
+          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-neutral-50/70 rounded-2xl p-6 sm:p-8 border border-neutral-200 shadow-sm space-y-6">
+            <h3 id="garment-input-heading" className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 pb-3 border-b border-neutral-200 flex items-center justify-between">
               <span>{t('step1Heading')}</span>
               <span className="text-neutral-900 font-bold">{t('inputPanel')}</span>
             </h3>
@@ -340,7 +361,7 @@ export default function ConsumerHomePage() {
                 <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-800 mb-2">
                   {t('fitPrefLabel')}
                 </label>
-                <div className="grid grid-cols-3 gap-2 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
+                <div className="grid grid-cols-3 gap-2 bg-neutral-200/70 p-1 rounded-xl border border-neutral-200">
                   {(['SNUG', 'REGULAR', 'RELAXED'] as const).map((pref) => {
                     const prefLabels = {
                       SNUG: t('prefSnug'),
@@ -356,7 +377,7 @@ export default function ConsumerHomePage() {
                         className={`py-2.5 px-2 text-xs font-medium rounded-lg transition min-h-[40px] flex items-center justify-center ${
                           isSelected
                             ? 'bg-black text-white font-bold shadow-sm'
-                            : 'text-neutral-600 hover:text-black'
+                            : 'text-neutral-700 hover:text-black'
                         }`}
                       >
                         {prefLabels[pref]}
@@ -525,105 +546,185 @@ export default function ConsumerHomePage() {
             )}
           </section>
         </div>
+      </main>
 
-        {/* 4. Interactive Visual Measurement Showcase Section */}
-        <section id="visual-guides" className="w-full bg-[#18181B] text-white rounded-2xl p-7 sm:p-12 shadow-sm border border-neutral-800 space-y-8">
-          <div className="border-b border-neutral-800 pb-5">
+      {/* ──────────────────────────────────────────────────────────────────────────
+          CHAPTER RIBBON DIVIDER: SECTION 02 → SECTION 03 (Studio Dark Transition)
+      ────────────────────────────────────────────────────────────────────────── */}
+      <div className="w-full bg-[#1A1B20] border-y border-neutral-800 py-4 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-400 select-none">
+        <div className="flex items-center space-x-3">
+          <span className="w-2 h-2 bg-emerald-400 rounded-full" />
+          <span className="font-bold text-white">CHAPTER III</span>
+          <span className="text-neutral-600">/</span>
+          <span>VISUAL MEASUREMENT MASTERCLASSES</span>
+        </div>
+        <div className="flex items-center space-x-4 text-[11px]">
+          <span className="hidden md:inline text-neutral-400">DUAL-METHOD ANCHORS</span>
+          <span className="hidden md:inline text-neutral-600">•</span>
+          <span className="text-white font-semibold">[ MASTERCLASS BENCH ]</span>
+        </div>
+      </div>
+
+      {/* ──────────────────────────────────────────────────────────────────────────
+          SECTION 03: VISUAL GUIDELINES (Deep Studio Noir Canvas)
+      ────────────────────────────────────────────────────────────────────────── */}
+      <section id="visual-guides" className="w-full bg-[#0F1014] text-white py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-800 space-y-10">
+        <div className="border-b border-neutral-800 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
             <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-400 mb-2">
               <span className="text-white font-bold">03 /</span>
               <span>{t('showcasePill')}</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h3 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
               {t('showcaseTitle')}
             </h3>
             <p className="text-xs sm:text-sm text-neutral-400 mt-1 max-w-2xl">
               {t('showcaseSub')}
             </p>
           </div>
-
-          {/* Side-by-Side Dual Interactive Visual Guides on Wide Screens */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full">
-            <div className="space-y-3">
-              <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold">
-                {t('methodA')}
-              </span>
-              <BodyMeasurementVisualGuide
-                activeZone="CHEST"
-                chestVal={chestVal}
-                waistVal={waistVal}
-                unit={unit}
-                interactive={true}
-              />
-            </div>
-
-            <div className="space-y-3">
-              <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold">
-                {t('methodB')}
-              </span>
-              <GarmentFlatVisualGuide
-                pitToPitVal={unit === 'in' ? 21.0 : 53.0}
-                unit={unit}
-                interactive={true}
-              />
-            </div>
+          <div className="text-xs font-mono text-neutral-400 hidden sm:block">
+            CALIBRATED ANATOMY • 100% DETERMINISTIC
           </div>
-        </section>
+        </div>
 
-        {/* 5. Supported Retail Brands Directory Across Full Width */}
-        <section id="supported-brands" className="w-full space-y-6">
-          <div className="text-center max-w-3xl mx-auto space-y-2">
-            <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 mb-1">
-              <span className="font-bold text-neutral-900">04 /</span>
-              <span>{t('brandDirPill')}</span>
-            </div>
-            <h3 className="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
-              {t('brandDirTitle')}
-            </h3>
-            <p className="text-xs sm:text-sm text-neutral-500">
-              {t('brandDirSub')}
-            </p>
+        {/* Side-by-Side Dual Interactive Visual Guides on Wide Screens */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full">
+          <div className="space-y-3 bg-[#17181D] border border-neutral-800 rounded-2xl p-6 sm:p-8">
+            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold pb-2 border-b border-neutral-800">
+              {t('methodA')}
+            </span>
+            <BodyMeasurementVisualGuide
+              activeZone="CHEST"
+              chestVal={chestVal}
+              waistVal={waistVal}
+              unit={unit}
+              interactive={true}
+            />
           </div>
 
-          {/* 6-Column Grid Spanning Full Viewport */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 w-full">
-            {brands.map((b) => {
-              const isSelected = selectedBrand === b.slug;
-              return (
-                <div
-                  key={b.slug}
-                  onClick={() => {
-                    setSelectedBrand(b.slug);
-                    const el = document.getElementById('sizing-engine');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className={`p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
-                    isSelected
-                      ? 'bg-neutral-50 border-black shadow-sm ring-1 ring-black'
-                      : 'bg-white border-neutral-200 hover:border-neutral-400'
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-bold text-neutral-900 text-base">{b.name}</h4>
-                      {isSelected && (
-                        <span className="text-[10px] font-mono font-semibold bg-black text-white px-2 py-0.5 rounded">
-                          {t('activeBrand')}
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-[11px] font-mono font-medium text-neutral-700 bg-neutral-100 border border-neutral-200 px-2 py-1 rounded inline-block mb-2">
-                      {b.basis}
-                    </span>
+          <div className="space-y-3 bg-[#17181D] border border-neutral-800 rounded-2xl p-6 sm:p-8">
+            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold pb-2 border-b border-neutral-800">
+              {t('methodB')}
+            </span>
+            <GarmentFlatVisualGuide
+              pitToPitVal={unit === 'in' ? 21.0 : 53.0}
+              unit={unit}
+              interactive={true}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────────────
+          CHAPTER RIBBON DIVIDER: SECTION 03 → SECTION 04 (Return to Light Archive)
+      ────────────────────────────────────────────────────────────────────────── */}
+      <div className="w-full bg-neutral-200/80 border-y border-neutral-300 py-3.5 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-600 select-none">
+        <div className="flex items-center space-x-3">
+          <span className="w-2 h-2 bg-neutral-900 rounded-full" />
+          <span className="font-bold text-neutral-900">CHAPTER IV</span>
+          <span className="text-neutral-400">/</span>
+          <span>INDIAN FASHION DIRECTORY</span>
+        </div>
+        <div className="flex items-center space-x-4 text-[11px]">
+          <span className="hidden md:inline text-neutral-500">SIX CALIBRATED LABELS</span>
+          <span className="hidden md:inline text-neutral-300">•</span>
+          <span className="text-neutral-900 font-semibold">[ RETAIL ARCHIVE ]</span>
+        </div>
+      </div>
+
+      {/* ──────────────────────────────────────────────────────────────────────────
+          SECTION 04: SUPPORTED RETAIL BRANDS (Warm Sand/Linen Canvas)
+      ────────────────────────────────────────────────────────────────────────── */}
+      <section id="supported-brands" className="w-full bg-[#F5F5F3] py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200/80 space-y-10">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 mb-1">
+            <span className="font-bold text-neutral-900">04 /</span>
+            <span>{t('brandDirPill')}</span>
+          </div>
+          <h3 className="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
+            {t('brandDirTitle')}
+          </h3>
+          <p className="text-xs sm:text-sm text-neutral-500">
+            {t('brandDirSub')}
+          </p>
+        </div>
+
+        {/* 6-Column Grid Spanning Full Viewport */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 w-full">
+          {brands.map((b) => {
+            const isSelected = selectedBrand === b.slug;
+            return (
+              <div
+                key={b.slug}
+                onClick={() => {
+                  setSelectedBrand(b.slug);
+                  const el = document.getElementById('sizing-engine');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className={`p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+                  isSelected
+                    ? 'bg-white border-black shadow-md ring-2 ring-black'
+                    : 'bg-white/80 border-neutral-200 hover:border-neutral-400 hover:bg-white'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="font-bold text-neutral-900 text-base">{b.name}</h4>
+                    {isSelected && (
+                      <span className="text-[10px] font-mono font-semibold bg-black text-white px-2 py-0.5 rounded">
+                        {t('activeBrand')}
+                      </span>
+                    )}
                   </div>
-                  <p className="text-xs text-neutral-500 mt-2">
-                    {t('cutLabel')} <strong className="text-neutral-800 font-medium">{b.cut}</strong>
-                  </p>
+                  <span className="text-[11px] font-mono font-medium text-neutral-700 bg-neutral-100 border border-neutral-200 px-2 py-1 rounded inline-block mb-2">
+                    {b.basis}
+                  </span>
                 </div>
-              );
-            })}
+                <p className="text-xs text-neutral-500 mt-2">
+                  {t('cutLabel')} <strong className="text-neutral-800 font-medium">{b.cut}</strong>
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────────────────────
+          SECTION 05: DPDP ACT PRIVACY & STANDARDS TRUST BANNER (Pristine White)
+      ────────────────────────────────────────────────────────────────────────── */}
+      <section className="w-full bg-white py-12 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200 select-none">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <div className="flex items-start space-x-3.5">
+            <span className="text-xl">🛡️</span>
+            <div>
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">DPDP Act 2023 Compliant</h4>
+              <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                Zero photo uploads or body scans. Only raw tailor tape measurements are computed locally.
+              </p>
+            </div>
           </div>
-        </section>
-      </main>
+
+          <div className="flex items-start space-x-3.5">
+            <span className="text-xl">📐</span>
+            <div>
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">Deterministic Design Ease</h4>
+              <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                Calibrated to verified pattern-maker tables with functional breathing ease from +2.0" to +6.0".
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start space-x-3.5">
+            <span className="text-xl">⚡</span>
+            <div>
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">Sub-5ms Execution</h4>
+              <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                Pure arithmetic algorithms without generative latency, hallucination, or sizing drift.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 6. Modals & Overlays */}
       <GuidedMeasurementModal
