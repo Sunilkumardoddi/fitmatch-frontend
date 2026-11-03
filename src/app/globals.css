@@ -31,3 +31,53 @@ body {
 .font-technical {
   font-family: 'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   FUNCTIONAL THEMATIC BACKGROUND PATTERNS
+   Identifies each section's objective & purpose in the background canvas.
+────────────────────────────────────────────────────────────────────────── */
+
+/* Section 01: Hero Atelier Measuring Tape Strip */
+.bg-atelier-hero {
+  background-color: #FAFAF8;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Section 02: Pattern-Maker's Drafting & Cutting Mat Grid */
+.bg-drafting-mat {
+  background-color: #FFFFFF;
+  background-image: 
+    radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 72px 72px, 72px 72px;
+}
+
+/* Section 03: Masterclass Darkroom Blueprint Grid */
+.bg-blueprint-dark {
+  background-color: #0E0F14;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Section 04: Fashion House Showroom & Archive Ledger */
+.bg-archive-ledger {
+  background-color: #F5F5F2;
+  background-image: 
+    radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Section 05: DPDP Act Privacy Vault Micro-Grid */
+.bg-privacy-vault {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}

@@ -100,10 +100,23 @@ export default function ConsumerHomePage() {
       />
 
       {/* ──────────────────────────────────────────────────────────────────────────
-          SECTION 01: HERO & LIVE TRUST LEDGER (Warm Gallery Ivory Canvas)
+          SECTION 01: HERO & LIVE TRUST LEDGER
+          Function in Background: Anatomical Tape Anchor & Pure Math Calibration
       ────────────────────────────────────────────────────────────────────────── */}
-      <section id="hero" className="relative w-full bg-[#FAFAF8] py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
-        <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 xl:gap-20">
+      <section id="hero" className="relative w-full bg-atelier-hero py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none border-b border-neutral-200/80">
+        {/* Background Functional Watermark: Anchor Objective */}
+        <div className="absolute right-4 -bottom-6 text-[14vw] font-black font-mono text-neutral-900/[0.018] select-none pointer-events-none tracking-tighter leading-none">
+          01 // TAPE ANCHOR
+        </div>
+
+        {/* Top Function Objective Stamp */}
+        <div className="absolute top-4 right-4 sm:right-8 lg:right-16 hidden md:flex items-center space-x-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest border border-dashed border-neutral-300/80 px-2.5 py-1 rounded bg-white/60">
+          <span>OBJECTIVE: BIOMETRIC-FREE ANATOMICAL MAPPING</span>
+          <span>•</span>
+          <span>DPDP COMPLIANT</span>
+        </div>
+
+        <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 xl:gap-20 relative z-10">
           {/* Hero Left Content — Editorial Typography */}
           <div className="flex-1 space-y-6 text-left">
             <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 bg-neutral-100 border border-neutral-200 px-3.5 py-1.5 rounded-md">
@@ -209,7 +222,7 @@ export default function ConsumerHomePage() {
         </div>
 
         {/* Live Metrics Trust Strip */}
-        <div className="w-full mt-16 pt-10 border-t border-neutral-200/80 grid grid-cols-2 md:grid-cols-4 gap-8 text-left select-none">
+        <div className="w-full mt-16 pt-10 border-t border-neutral-200/80 grid grid-cols-2 md:grid-cols-4 gap-8 text-left select-none relative z-10">
           <div className="space-y-1">
             <span className="text-xs font-mono text-neutral-400 block">01 / RETAIL</span>
             <span className="block text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">{t('metricBrands')}</span>
@@ -236,7 +249,7 @@ export default function ConsumerHomePage() {
       {/* ──────────────────────────────────────────────────────────────────────────
           CHAPTER RIBBON DIVIDER: SECTION 01 → SECTION 02
       ────────────────────────────────────────────────────────────────────────── */}
-      <div className="w-full bg-neutral-100/80 border-y border-neutral-200 py-3.5 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-500 select-none">
+      <div className="w-full bg-neutral-100/90 border-y border-neutral-200 py-3.5 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-500 select-none">
         <div className="flex items-center space-x-3">
           <span className="w-2 h-2 bg-neutral-900 rounded-full" />
           <span className="font-bold text-neutral-900">CHAPTER II</span>
@@ -246,15 +259,36 @@ export default function ConsumerHomePage() {
         <div className="flex items-center space-x-4 text-[11px]">
           <span className="hidden md:inline text-neutral-400">CALIBRATED MARGIN MATRIX</span>
           <span className="hidden md:inline text-neutral-300">•</span>
-          <span className="text-neutral-900 font-semibold">[ INPUT BENCH ]</span>
+          <span className="text-neutral-900 font-semibold">[ DRAFTING BENCH ]</span>
         </div>
       </div>
 
       {/* ──────────────────────────────────────────────────────────────────────────
-          SECTION 02: SIZING CALCULATOR & EASE ENGINE (Pure Laboratory White Canvas)
+          SECTION 02: SIZING CALCULATOR & EASE ENGINE
+          Function in Background: Pattern-Maker's Cutting Mat & Drafting Table Grid
       ────────────────────────────────────────────────────────────────────────── */}
-      <main id="sizing-engine" className="w-full bg-white py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200/80 space-y-12">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-neutral-200 pb-6">
+      <main id="sizing-engine" className="relative w-full bg-drafting-mat py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200/80 space-y-12 overflow-hidden">
+        {/* Background Cutting Mat Watermark: Objective Identifiers */}
+        <div className="absolute left-6 top-8 text-[12vw] font-black font-mono text-neutral-900/[0.018] select-none pointer-events-none tracking-tight leading-none">
+          02 // PATTERN BENCH
+        </div>
+
+        {/* Cutting Mat Calibration Ruler Strip on Top Edge */}
+        <div className="absolute top-0 left-0 right-0 h-4 border-b border-neutral-200/60 hidden sm:flex items-end justify-between px-6 text-[8px] font-mono text-neutral-400 select-none pointer-events-none bg-neutral-50/70">
+          <span>| 00 CM</span>
+          <span>| 10</span>
+          <span>| 20</span>
+          <span>| 30</span>
+          <span>| 40</span>
+          <span>| 50 (DATUM CENTER)</span>
+          <span>| 60</span>
+          <span>| 70</span>
+          <span>| 80</span>
+          <span>| 90</span>
+          <span>| 100 CM |</span>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-neutral-200 pb-6 relative z-10 pt-2">
           <div>
             <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 mb-2">
               <span className="font-bold text-neutral-900">02 /</span>
@@ -268,24 +302,33 @@ export default function ConsumerHomePage() {
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={toggleUnit}
-            className="text-xs font-medium text-neutral-900 bg-white hover:bg-neutral-50 border border-neutral-300 hover:border-black px-4 py-2.5 rounded-lg transition min-h-[40px] flex items-center space-x-2 shadow-sm"
-          >
-            <span>{t('activeUnitLabel')}</span>
-            <span className="font-mono bg-neutral-100 px-2 py-0.5 rounded text-black font-bold">
-              {unit.toUpperCase()}
-            </span>
-            <span className="text-neutral-400">{t('clickToSwitch')}</span>
-          </button>
+          <div className="flex items-center space-x-3">
+            {/* Functional Purpose Stamp */}
+            <div className="hidden lg:flex items-center space-x-2 text-[10px] font-mono text-neutral-500 uppercase tracking-widest border border-dashed border-neutral-300 px-3 py-2 rounded bg-white/90">
+              <span>STATION: DRAFTING MAT</span>
+              <span>•</span>
+              <span>+2.0" TO +6.0" EASE MATRIX</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={toggleUnit}
+              className="text-xs font-medium text-neutral-900 bg-white hover:bg-neutral-50 border border-neutral-300 hover:border-black px-4 py-2.5 rounded-lg transition min-h-[40px] flex items-center space-x-2 shadow-sm"
+            >
+              <span>{t('activeUnitLabel')}</span>
+              <span className="font-mono bg-neutral-100 px-2 py-0.5 rounded text-black font-bold">
+                {unit.toUpperCase()}
+              </span>
+              <span className="text-neutral-400">{t('clickToSwitch')}</span>
+            </button>
+          </div>
         </div>
 
         {/* 12-Column Responsive Sizing Grid Spanning Full Width */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start w-full relative z-10">
           {/* Left Column: Inputs & Interactive Visual Cut (5 cols) */}
-          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-neutral-50/70 rounded-2xl p-6 sm:p-8 border border-neutral-200 shadow-sm space-y-6">
-            <h3 id="garment-input-heading" className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 pb-3 border-b border-neutral-200 flex items-center justify-between">
+          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-neutral-200 shadow-sm space-y-6">
+            <h3 id="garment-input-heading" className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 pb-3 border-b border-neutral-100 flex items-center justify-between">
               <span>{t('step1Heading')}</span>
               <span className="text-neutral-900 font-bold">{t('inputPanel')}</span>
             </h3>
@@ -361,7 +404,7 @@ export default function ConsumerHomePage() {
                 <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-800 mb-2">
                   {t('fitPrefLabel')}
                 </label>
-                <div className="grid grid-cols-3 gap-2 bg-neutral-200/70 p-1 rounded-xl border border-neutral-200">
+                <div className="grid grid-cols-3 gap-2 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
                   {(['SNUG', 'REGULAR', 'RELAXED'] as const).map((pref) => {
                     const prefLabels = {
                       SNUG: t('prefSnug'),
@@ -551,7 +594,7 @@ export default function ConsumerHomePage() {
       {/* ──────────────────────────────────────────────────────────────────────────
           CHAPTER RIBBON DIVIDER: SECTION 02 → SECTION 03 (Studio Dark Transition)
       ────────────────────────────────────────────────────────────────────────── */}
-      <div className="w-full bg-[#1A1B20] border-y border-neutral-800 py-4 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-400 select-none">
+      <div className="w-full bg-[#18191E] border-y border-neutral-800 py-4 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-400 select-none">
         <div className="flex items-center space-x-3">
           <span className="w-2 h-2 bg-emerald-400 rounded-full" />
           <span className="font-bold text-white">CHAPTER III</span>
@@ -561,15 +604,21 @@ export default function ConsumerHomePage() {
         <div className="flex items-center space-x-4 text-[11px]">
           <span className="hidden md:inline text-neutral-400">DUAL-METHOD ANCHORS</span>
           <span className="hidden md:inline text-neutral-600">•</span>
-          <span className="text-white font-semibold">[ MASTERCLASS BENCH ]</span>
+          <span className="text-white font-semibold">[ MASTERCLASS BLUEPRINT ]</span>
         </div>
       </div>
 
       {/* ──────────────────────────────────────────────────────────────────────────
-          SECTION 03: VISUAL GUIDELINES (Deep Studio Noir Canvas)
+          SECTION 03: VISUAL GUIDELINES
+          Function in Background: Anatomical Silhouette Blueprint & Garment Flat Drafting
       ────────────────────────────────────────────────────────────────────────── */}
-      <section id="visual-guides" className="w-full bg-[#0F1014] text-white py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-800 space-y-10">
-        <div className="border-b border-neutral-800 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <section id="visual-guides" className="relative w-full bg-blueprint-dark text-white py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-800 space-y-10 overflow-hidden">
+        {/* Background Blueprint Watermark: Objective Identifiers */}
+        <div className="absolute right-6 top-8 text-[11vw] font-black font-mono text-white/[0.02] select-none pointer-events-none tracking-tight leading-none">
+          03 // BLUEPRINT
+        </div>
+
+        <div className="border-b border-neutral-800 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 relative z-10">
           <div>
             <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-400 mb-2">
               <span className="text-white font-bold">03 /</span>
@@ -582,14 +631,16 @@ export default function ConsumerHomePage() {
               {t('showcaseSub')}
             </p>
           </div>
-          <div className="text-xs font-mono text-neutral-400 hidden sm:block">
-            CALIBRATED ANATOMY • 100% DETERMINISTIC
+
+          {/* Blueprint Function Purpose Stamp */}
+          <div className="inline-flex items-center space-x-2 text-[10px] font-mono text-neutral-400 uppercase tracking-widest border border-dashed border-neutral-800 px-3 py-2 rounded bg-black/40">
+            <span>OBJECTIVE: TAILORING TAPE VS FLAT RULER MASTERCLASS</span>
           </div>
         </div>
 
         {/* Side-by-Side Dual Interactive Visual Guides on Wide Screens */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full">
-          <div className="space-y-3 bg-[#17181D] border border-neutral-800 rounded-2xl p-6 sm:p-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full relative z-10">
+          <div className="space-y-3 bg-[#13141A]/90 border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm">
             <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold pb-2 border-b border-neutral-800">
               {t('methodA')}
             </span>
@@ -602,7 +653,7 @@ export default function ConsumerHomePage() {
             />
           </div>
 
-          <div className="space-y-3 bg-[#17181D] border border-neutral-800 rounded-2xl p-6 sm:p-8">
+          <div className="space-y-3 bg-[#13141A]/90 border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm">
             <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold pb-2 border-b border-neutral-800">
               {t('methodB')}
             </span>
@@ -618,7 +669,7 @@ export default function ConsumerHomePage() {
       {/* ──────────────────────────────────────────────────────────────────────────
           CHAPTER RIBBON DIVIDER: SECTION 03 → SECTION 04 (Return to Light Archive)
       ────────────────────────────────────────────────────────────────────────── */}
-      <div className="w-full bg-neutral-200/80 border-y border-neutral-300 py-3.5 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-600 select-none">
+      <div className="w-full bg-neutral-200/90 border-y border-neutral-300 py-3.5 px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between text-xs font-mono text-neutral-600 select-none">
         <div className="flex items-center space-x-3">
           <span className="w-2 h-2 bg-neutral-900 rounded-full" />
           <span className="font-bold text-neutral-900">CHAPTER IV</span>
@@ -633,10 +684,16 @@ export default function ConsumerHomePage() {
       </div>
 
       {/* ──────────────────────────────────────────────────────────────────────────
-          SECTION 04: SUPPORTED RETAIL BRANDS (Warm Sand/Linen Canvas)
+          SECTION 04: SUPPORTED RETAIL BRANDS
+          Function in Background: Fashion House Swatch Archive & Specification Directory
       ────────────────────────────────────────────────────────────────────────── */}
-      <section id="supported-brands" className="w-full bg-[#F5F5F3] py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200/80 space-y-10">
-        <div className="text-center max-w-3xl mx-auto space-y-2">
+      <section id="supported-brands" className="relative w-full bg-archive-ledger py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200/80 space-y-10 overflow-hidden">
+        {/* Background Archive Watermark: Objective Identifiers */}
+        <div className="absolute left-8 bottom-6 text-[12vw] font-black font-mono text-neutral-900/[0.018] select-none pointer-events-none tracking-tight leading-none">
+          04 // RETAIL ARCHIVE
+        </div>
+
+        <div className="text-center max-w-3xl mx-auto space-y-2 relative z-10">
           <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 mb-1">
             <span className="font-bold text-neutral-900">04 /</span>
             <span>{t('brandDirPill')}</span>
@@ -647,10 +704,18 @@ export default function ConsumerHomePage() {
           <p className="text-xs sm:text-sm text-neutral-500">
             {t('brandDirSub')}
           </p>
+
+          <div className="pt-2">
+            <div className="inline-flex items-center space-x-2 text-[10px] font-mono text-neutral-500 uppercase tracking-widest border border-dashed border-neutral-300 px-3 py-1 rounded bg-white/70">
+              <span>ARCHIVE: 6 VERIFIED INDIAN FASHION HOUSES</span>
+              <span>•</span>
+              <span>GARMENT VS BODY BASIS</span>
+            </div>
+          </div>
         </div>
 
         {/* 6-Column Grid Spanning Full Viewport */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 w-full relative z-10">
           {brands.map((b) => {
             const isSelected = selectedBrand === b.slug;
             return (
@@ -690,37 +755,54 @@ export default function ConsumerHomePage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────────────────────
-          SECTION 05: DPDP ACT PRIVACY & STANDARDS TRUST BANNER (Pristine White)
+          SECTION 05: DPDP ACT PRIVACY VAULT & TRUST STANDARDS
+          Function in Background: Cryptographic On-Device Computation & Zero Biometric Storage
       ────────────────────────────────────────────────────────────────────────── */}
-      <section className="w-full bg-white py-12 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200 select-none">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-          <div className="flex items-start space-x-3.5">
-            <span className="text-xl">🛡️</span>
-            <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">DPDP Act 2023 Compliant</h4>
-              <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
-                Zero photo uploads or body scans. Only raw tailor tape measurements are computed locally.
-              </p>
-            </div>
+      <section className="relative w-full bg-privacy-vault py-12 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-neutral-200 select-none overflow-hidden">
+        {/* Background Privacy Vault Watermark: Objective Identifiers */}
+        <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[9vw] font-black font-mono text-neutral-900/[0.018] select-none pointer-events-none tracking-tight leading-none">
+          05 // PRIVACY VAULT
+        </div>
+
+        <div className="w-full relative z-10 space-y-6">
+          <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 font-semibold">
+              TECHNICAL SECURITY & DPDP ACT COMPLIANCE VAULT
+            </span>
+            <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest hidden sm:inline">
+              ON-DEVICE CLIENT-SIDE COMPUTATION
+            </span>
           </div>
 
-          <div className="flex items-start space-x-3.5">
-            <span className="text-xl">📐</span>
-            <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">Deterministic Design Ease</h4>
-              <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
-                Calibrated to verified pattern-maker tables with functional breathing ease from +2.0" to +6.0".
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div className="flex items-start space-x-3.5 bg-white/70 p-4 rounded-xl border border-neutral-200/80">
+              <span className="text-xl">🛡️</span>
+              <div>
+                <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">DPDP Act 2023 Compliant</h4>
+                <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                  Zero photo uploads or body scans. Only raw tailor tape measurements are computed locally.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="flex items-start space-x-3.5">
-            <span className="text-xl">⚡</span>
-            <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">Sub-5ms Execution</h4>
-              <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
-                Pure arithmetic algorithms without generative latency, hallucination, or sizing drift.
-              </p>
+            <div className="flex items-start space-x-3.5 bg-white/70 p-4 rounded-xl border border-neutral-200/80">
+              <span className="text-xl">📐</span>
+              <div>
+                <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">Deterministic Design Ease</h4>
+                <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                  Calibrated to verified pattern-maker tables with functional breathing ease from +2.0" to +6.0".
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-3.5 bg-white/70 p-4 rounded-xl border border-neutral-200/80">
+              <span className="text-xl">⚡</span>
+              <div>
+                <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-neutral-900">Sub-5ms Execution</h4>
+                <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                  Pure arithmetic algorithms without generative latency, hallucination, or sizing drift.
+                </p>
+              </div>
             </div>
           </div>
         </div>
