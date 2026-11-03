@@ -22,3 +22,4 @@ We follow Conventional Commits:
 2. Run type-checks: `npm run check`.
 3. Verify responsive layout across $360\text{px}$ (mobile), $390\text{px}$ (standard phone), and $1280\text{px}$ (desktop).
 4. Submit a Pull Request with screenshots or interaction recordings.
+

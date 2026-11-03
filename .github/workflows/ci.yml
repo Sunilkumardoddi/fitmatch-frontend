@@ -39,3 +39,4 @@ jobs:
             exit 1
           fi
           echo "Secret hygiene scan passed: zero hardcoded credentials."
+
