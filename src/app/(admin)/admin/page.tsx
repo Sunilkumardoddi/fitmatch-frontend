@@ -1,87 +1,93 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { adminApi, AdminSizeChartSummary } from '../../../lib/api/admin-api';
+import { AdminHeader } from '../../../components/admin/AdminHeader';
+import { Search, Filter, CheckCircle2, Send, Lock, AlertCircle, RefreshCw } from 'lucide-react';
 
-interface AdminSizeChart {
-  id: string;
-  brand: string;
-  category: string;
-  cut: string;
-  basis: string;
-  version: number;
-  status: 'PUBLISHED' | 'IN_REVIEW' | 'DRAFT';
-  sourceUrl: string;
-}
-
-export default function AdminCatalogPage() {
+export default function AdminCatalogQueuePage() {
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [charts, setCharts] = useState<AdminSizeChart[]>([
-    { id: '1', brand: 'Snitch', category: "Men's Casual Shirts", cut: 'Slim', basis: 'GARMENT', version: 1, status: 'PUBLISHED', sourceUrl: 'snitch.co.in/pages/size-guide' },
-    { id: '2', brand: 'The Souled Store', category: 'Crew Neck Tee', cut: 'Regular', basis: 'GARMENT', version: 1, status: 'PUBLISHED', sourceUrl: 'thesouledstore.com/size-guide' },
-    { id: '3', brand: 'Allen Solly', category: 'Formal Dress Shirt', cut: 'Classic', basis: 'DUAL', version: 2, status: 'PUBLISHED', sourceUrl: 'allensolly.abfrl.in/sizechart' },
-    { id: '4', brand: 'Beyoung', category: "Men's Chinos", cut: 'Slim', basis: 'GARMENT', version: 1, status: 'IN_REVIEW', sourceUrl: 'beyoung.in/size-guide/chinos' },
-    { id: '5', brand: 'Bewakoof', category: 'Oversized T-Shirt', cut: 'Relaxed', basis: 'GARMENT', version: 1, status: 'DRAFT', sourceUrl: 'bewakoof.com/size-chart' },
-  ]);
-
+  const [charts, setCharts] = useState<AdminSizeChartSummary[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [notification, setNotification] = useState<string | null>(null);
 
-  const approveChart = (id: string) => {
-    const target = charts.find((c) => c.id === id);
-    if (!target) return;
+  const loadData = async () => {
+    setIsLoading(true);
+    try {
+      const data = await adminApi.getCharts();
+      setCharts(data);
+    } catch (err: any) {
+      setNotification(`Failed to load charts from backend: ${err.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    setCharts(charts.map((c) => (c.id === id ? { ...c, status: 'PUBLISHED' } : c)));
-    setNotification(`Chart for ${target.brand} (${target.category}) has been verified and published! Per ADR-008, it is now strictly immutable.`);
-    setTimeout(() => setNotification(null), 5000);
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const handlePublish = async (id: string, brand: string, category: string) => {
+    const res = await adminApi.publishChart(id);
+    if (res.success) {
+      setCharts((prev) =>
+        prev.map((c) => (c.id === id ? { ...c, status: 'PUBLISHED' } : c))
+      );
+      setNotification(`Chart for ${brand} (${category}) published. Immutability locked per ADR-008.`);
+      setTimeout(() => setNotification(null), 5000);
+    }
+  };
+
+  const handleSubmitReview = async (id: string) => {
+    const res = await adminApi.submitForReview(id);
+    if (res.success) {
+      setCharts((prev) =>
+        prev.map((c) => (c.id === id ? { ...c, status: 'IN_REVIEW' } : c))
+      );
+      setNotification(`Chart submitted for review.`);
+      setTimeout(() => setNotification(null), 5000);
+    }
   };
 
   const filteredCharts = charts.filter((c) => {
     const matchesFilter = filterStatus === 'ALL' || c.status === filterStatus;
-    const matchesSearch = c.brand.toLowerCase().includes(searchQuery.toLowerCase()) || c.category.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch =
+      c.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
-        <div>
-          <div className="flex items-center space-x-2">
-            <span className="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-              Operator / Admin Portal
-            </span>
-            <span className="text-xs text-slate-500">&bull; ADR-008 Chart Governance</span>
-          </div>
-          <h1 className="text-2xl font-black tracking-tight text-slate-900 mt-2">
-            Size Chart Verification & Lifecycle Queue
-          </h1>
-          <p className="text-xs text-slate-500 mt-1">
-            Enforcing Draft &rarr; In Review &rarr; Published state transitions. Published versions cannot be mutated.
-          </p>
-        </div>
-
-        <Link
-          href="/"
-          className="text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-4 py-3 rounded-xl transition min-h-[48px] flex items-center"
-        >
-          &larr; Return to Consumer Sizing
-        </Link>
-      </div>
+    <div className="space-y-6">
+      <AdminHeader
+        title="Size Chart Verification & Lifecycle Queue"
+        subtitle="Manage brand charts, state transitions (Draft → In Review → Published), and enforce ADR-008 immutability."
+      />
 
       {notification && (
-        <div role="status" className="bg-emerald-50 border border-emerald-300 p-4 rounded-2xl text-emerald-800 text-xs font-bold flex items-center justify-between">
-          <span>✓ {notification}</span>
-          <button type="button" onClick={() => setNotification(null)} className="text-emerald-700 hover:text-emerald-900 text-xs ml-4">
+        <div
+          role="status"
+          className="bg-emerald-50 border border-emerald-300 p-4 rounded-2xl text-emerald-800 text-xs font-bold flex items-center justify-between shadow-sm animate-in fade-in"
+        >
+          <div className="flex items-center space-x-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+            <span>{notification}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setNotification(null)}
+            className="text-emerald-700 hover:text-emerald-900 text-xs ml-4"
+          >
             ✕
           </button>
         </div>
       )}
 
-      {/* Main Table Card */}
+      {/* Main Filter & Table Card */}
       <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-5">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-100 pb-4">
-          {/* Status Filter Tabs */}
+          {/* Status Tabs */}
           <div className="flex flex-wrap gap-1.5 bg-slate-100 p-1 rounded-xl text-xs font-bold">
             {(['ALL', 'PUBLISHED', 'IN_REVIEW', 'DRAFT'] as const).map((st) => (
               <button
@@ -89,7 +95,9 @@ export default function AdminCatalogPage() {
                 type="button"
                 onClick={() => setFilterStatus(st)}
                 className={`py-2 px-3 rounded-lg transition min-h-[40px] ${
-                  filterStatus === st ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                  filterStatus === st
+                    ? 'bg-white text-indigo-700 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {st === 'ALL' ? 'All Charts' : st.replace('_', ' ')}
@@ -97,15 +105,26 @@ export default function AdminCatalogPage() {
             ))}
           </div>
 
-          {/* Search Input */}
-          <div className="w-full md:w-64">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search brand or category..."
-              className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-indigo-600"
-            />
+          {/* Search Bar & Refresh */}
+          <div className="flex items-center space-x-2 w-full md:w-auto">
+            <div className="relative w-full md:w-72">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Filter brand or category..."
+                className="w-full pl-9 pr-3.5 py-2 border border-slate-300 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-indigo-600"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={loadData}
+              title="Refresh queue"
+              className="p-2 border border-slate-300 hover:bg-slate-50 text-slate-600 rounded-xl transition min-h-[40px] min-w-[40px] flex items-center justify-center"
+            >
+              <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+            </button>
           </div>
         </div>
 
@@ -119,7 +138,7 @@ export default function AdminCatalogPage() {
                 <th className="py-3 px-3">Dimension Basis</th>
                 <th className="py-3 px-3">Version</th>
                 <th className="py-3 px-3">Status</th>
-                <th className="py-3 px-3">Source Provenance</th>
+                <th className="py-3 px-3">Provenance Source</th>
                 <th className="py-3 px-3 text-right">Action</th>
               </tr>
             </thead>
@@ -154,20 +173,25 @@ export default function AdminCatalogPage() {
                       {c.status === 'IN_REVIEW' ? (
                         <button
                           type="button"
-                          onClick={() => approveChart(c.id)}
-                          className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition shadow-sm min-h-[44px]"
+                          onClick={() => handlePublish(c.id, c.brand, c.category)}
+                          className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition shadow-sm min-h-[44px] flex items-center space-x-1.5 ml-auto"
                         >
-                          Approve & Publish
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>Approve & Publish</span>
                         </button>
                       ) : c.status === 'PUBLISHED' ? (
-                        <span className="text-slate-400 text-xs italic font-medium">Immutable</span>
+                        <span className="text-slate-400 text-xs italic font-medium inline-flex items-center space-x-1">
+                          <Lock className="w-3 h-3" />
+                          <span>Locked (Immutable)</span>
+                        </span>
                       ) : (
                         <button
                           type="button"
-                          onClick={() => approveChart(c.id)}
-                          className="text-indigo-600 hover:text-indigo-800 font-bold text-xs p-2 min-h-[44px]"
+                          onClick={() => handleSubmitReview(c.id)}
+                          className="text-indigo-600 hover:text-indigo-800 font-bold text-xs p-2 min-h-[44px] inline-flex items-center space-x-1"
                         >
-                          Submit Review
+                          <Send className="w-3 h-3" />
+                          <span>Submit Review</span>
                         </button>
                       )}
                     </td>
@@ -175,8 +199,8 @@ export default function AdminCatalogPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={7} className="py-8 text-center text-slate-500 text-xs font-semibold">
-                    No size charts match the selected filter.
+                  <td colSpan={7} className="py-12 text-center text-slate-500 text-xs font-semibold">
+                    {isLoading ? 'Loading charts from catalog...' : 'No size charts match the selected filter.'}
                   </td>
                 </tr>
               )}

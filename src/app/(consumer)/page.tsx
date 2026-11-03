@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { apiClient, type SizeRecommendationResponse } from '../../lib/api-client';
+import { consumerApi as apiClient, type SizeRecommendationResponse } from '../../lib/api/consumer-api';
 import { SizeBadge } from '../../components/ui/SizeBadge';
 import { MeasurementInput } from '../../components/ui/MeasurementInput';
 import { FitVisualizer } from '../../components/ui/FitVisualizer';
@@ -111,12 +110,6 @@ export default function ConsumerHomePage() {
           >
             <span>🔒 Privacy Center</span>
           </button>
-          <Link
-            href="/admin"
-            className="text-xs bg-[#4263EB] hover:bg-indigo-600 text-white font-bold px-4 py-3 rounded-xl shadow-md transition min-h-[48px] flex items-center space-x-1 focus-visible:ring-2 focus-visible:ring-white"
-          >
-            <span>Operator Queue &rarr;</span>
-          </Link>
         </div>
       </header>
 
