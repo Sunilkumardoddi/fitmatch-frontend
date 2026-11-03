@@ -1,36 +1,11 @@
 <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="fm-gold-primary" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFF6DE" />
-      <stop offset="25%" stop-color="#E9CA7D" />
-      <stop offset="65%" stop-color="#C99E3D" />
-      <stop offset="100%" stop-color="#8C6515" />
-    </linearGradient>
-    <linearGradient id="fm-gold-shimmer" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#D4AF37" />
-      <stop offset="45%" stop-color="#FFF9EB" />
-      <stop offset="100%" stop-color="#AA820A" />
-    </linearGradient>
-    <radialGradient id="fm-obsidian-core" cx="50%" cy="45%" r="60%">
-      <stop offset="0%" stop-color="#1E222D" />
-      <stop offset="70%" stop-color="#0B0D13" />
-      <stop offset="100%" stop-color="#050608" />
-    </radialGradient>
-  </defs>
-
-  <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#fm-obsidian-core)" stroke="url(#fm-gold-primary)" stroke-width="2" />
-  <rect x="10.5" y="10.5" width="79" height="79" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
-
-  <line x1="50" y1="9" x2="50" y2="14" stroke="url(#fm-gold-shimmer)" stroke-width="2" stroke-linecap="round" />
-  <line x1="50" y1="86" x2="50" y2="91" stroke="url(#fm-gold-shimmer)" stroke-width="2" stroke-linecap="round" />
-  <line x1="9" y1="50" x2="14" y2="50" stroke="url(#fm-gold-shimmer)" stroke-width="2" stroke-linecap="round" />
-  <line x1="86" y1="50" x2="91" y2="50" stroke="url(#fm-gold-shimmer)" stroke-width="2" stroke-linecap="round" />
-
-  <path d="M31 27C31 25.3431 32.3431 24 34 24H39C40.6569 24 42 25.3431 42 27V73C42 74.6569 40.6569 76 39 76H34C32.3431 76 31 74.6569 31 73V27Z" fill="url(#fm-gold-primary)" />
-  <path d="M40 24H67C68.6569 24 70 25.3431 70 27V31C70 32.6569 68.6569 34 67 34H40V24Z" fill="url(#fm-gold-shimmer)" />
-  <path d="M41 44H59C60.6569 44 62 45.3431 62 47V51C62 52.6569 60.6569 54 59 54H41V44Z" fill="url(#fm-gold-primary)" />
-  <path d="M50 44L69 73.5C69.7 74.6 71.3 74.6 72 73.5L78.5 63C79.1 62.1 79.1 60.9 78.5 60L60 31" stroke="url(#fm-gold-shimmer)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M68 36C68 34.3431 69.3431 33 71 33H74C75.6569 33 77 34.3431 77 36V73C77 74.6569 75.6569 76 74 76H71C69.3431 76 68 74.6569 68 73V36Z" fill="url(#fm-gold-primary)" />
-  <polygon points="50,47 54.5,53 50,59 45.5,53" fill="url(#fm-gold-shimmer)" />
-  <circle cx="50" cy="53" r="1.5" fill="#FFFFFF" />
+  <rect x="6" y="6" width="88" height="88" rx="14" fill="#111111" stroke="#FFFFFF" stroke-width="4" />
+  <line x1="28" y1="6" x2="28" y2="16" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+  <line x1="50" y1="6" x2="50" y2="20" stroke="#D4AF37" stroke-width="3" stroke-linecap="round" />
+  <line x1="72" y1="6" x2="72" y2="16" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+  <path d="M32 30V76" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+  <path d="M32 34H68" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+  <path d="M32 52H56" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" />
+  <path d="M52 52L68 76V34" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="50" cy="52" r="3.5" fill="#D4AF37" />
 </svg>

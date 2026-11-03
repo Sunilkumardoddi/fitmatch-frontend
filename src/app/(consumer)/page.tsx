@@ -50,7 +50,7 @@ export default function ConsumerHomePage() {
 
       // Convert entered unit to canonical integer millimeters
       const chestMm = unit === 'in' ? Math.round(chestVal * 25.4) : Math.round(chestVal * 10);
-      const measurements: Record<string, number> = { CHEST: chestMm };
+      const measurements: Record<string, number> = { CHECH: chestMm, CHEST: chestMm };
       if (typeof waistVal === 'number' && waistVal > 0) {
         measurements['WAIST_TROUSER'] = unit === 'in' ? Math.round(waistVal * 25.4) : Math.round(waistVal * 10);
       }
@@ -90,8 +90,8 @@ export default function ConsumerHomePage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-slate-50 flex flex-col text-slate-900">
-      {/* 1. Full-Width Sticky Top Navigation Bar */}
+    <div className="w-full min-h-screen bg-[#FAFAF8] flex flex-col text-neutral-900">
+      {/* 1. Sticky Navigation Bar */}
       <ConsumerNavbar
         unit={unit}
         onUnitToggle={toggleUnit}
@@ -99,39 +99,35 @@ export default function ConsumerHomePage() {
         onOpenPrivacy={() => setIsPrivacyOpen(true)}
       />
 
-      {/* 2. Fluid Full-Viewport Hero Section */}
-      <section className="relative w-full bg-gradient-to-b from-[#06070B] via-[#0D0F16] to-[#151722] text-white py-14 sm:py-20 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
-        {/* Subtle Background Glow with Champagne Gold & Emerald Halo */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-gradient-to-r from-amber-600/10 via-emerald-600/10 to-amber-500/10 blur-3xl pointer-events-none rounded-full" />
-
-        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 xl:gap-20">
-          {/* Hero Left Content */}
-          <div className="flex-1 space-y-6 text-center lg:text-left">
-            <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider flex items-center space-x-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>{t('heroBadge1')}</span>
-              </span>
-              <span className="text-amber-200/90 text-xs bg-amber-400/10 border border-amber-400/25 px-3.5 py-1.5 rounded-full font-semibold">
-                {t('heroBadge2')}
-              </span>
+      {/* 2. Editorial Fashion Hero Section */}
+      <section className="relative w-full bg-[#FAFAF8] border-b border-neutral-200/80 py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
+        <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 xl:gap-20">
+          {/* Hero Left Content — Editorial Presentation */}
+          <div className="flex-1 space-y-6 text-left">
+            <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 bg-neutral-100 border border-neutral-200 px-3.5 py-1.5 rounded-md">
+              <span className="font-bold text-neutral-900">01 /</span>
+              <span>{t('heroBadge1')}</span>
+              <span className="text-neutral-400">•</span>
+              <span>{t('heroBadge2')}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-tight">
-              {t('heroTitlePart1')} <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-400 bg-clip-text text-transparent">
+            <div className="space-y-3">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-neutral-900 leading-[1.06]">
+                {t('heroTitlePart1')}
+              </h1>
+              <p className="font-editorial italic text-2xl sm:text-4xl text-neutral-600 font-normal leading-snug">
                 {t('heroTitlePart2')}
-              </span>
-            </h1>
+              </p>
+            </div>
 
-            <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl mx-auto lg:mx-0">
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
               {t('heroSubtitle')}
             </p>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-4 pt-3">
               <a
                 href="#sizing-engine"
-                className="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-black px-7 py-4 rounded-xl shadow-lg shadow-amber-600/30 transition-all text-sm min-h-[48px] flex items-center space-x-2"
+                className="bg-black hover:bg-neutral-800 text-white font-medium px-8 py-4 rounded-xl text-sm transition shadow-sm flex items-center space-x-2 min-h-[48px]"
               >
                 <span>{t('heroCtaCalc')}</span>
                 <span>&darr;</span>
@@ -139,51 +135,51 @@ export default function ConsumerHomePage() {
               <button
                 type="button"
                 onClick={() => setIsGuideOpen(true)}
-                className="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-xl border border-amber-300/30 transition-all text-sm min-h-[48px] flex items-center space-x-2"
+                className="bg-white hover:bg-neutral-50 text-neutral-900 font-medium px-6 py-4 rounded-xl border border-neutral-300 hover:border-black text-sm transition min-h-[48px] flex items-center space-x-2"
               >
                 <span>📏 {t('heroCtaGuide')}</span>
               </button>
             </div>
           </div>
 
-          {/* Hero Right: Live Interactive Quick-Match Card */}
-          <div className="w-full lg:w-[480px] xl:w-[540px] bg-[#12141D]/90 backdrop-blur-2xl border border-amber-400/25 rounded-3xl p-7 shadow-2xl shadow-black/80 text-white space-y-5 flex-shrink-0">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-300">
+          {/* Hero Right: Tactile Garment Spec Sheet */}
+          <div className="w-full lg:w-[460px] xl:w-[500px] bg-white border border-neutral-200/90 rounded-2xl p-7 shadow-[0_10px_35px_-10px_rgba(0,0,0,0.06)] text-neutral-900 space-y-6 flex-shrink-0">
+            <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 font-semibold">
                 {t('heroQuickMatch')}
               </span>
-              <span className="text-xs bg-amber-400/10 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full font-bold">
+              <span className="text-xs bg-neutral-100 text-neutral-800 border border-neutral-200 px-3 py-1 rounded-full font-mono font-medium">
                 Snitch Casual Shirt
               </span>
             </div>
 
             <div className="flex items-baseline justify-between">
               <div>
-                <span className="text-xs text-slate-300 block">{t('heroRecSize')}</span>
-                <span className="text-6xl font-black text-white tracking-tight">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block font-semibold">{t('heroRecSize')}</span>
+                <span className="text-6xl font-black text-neutral-900 tracking-tight">
                   {recommendation?.recommendedSize || 'L'}
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-xs text-slate-300 block">{t('heroYourChest')}</span>
-                <span className="text-2xl font-bold font-mono text-amber-300">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block font-semibold">{t('heroYourChest')}</span>
+                <span className="text-2xl font-mono font-bold text-neutral-900">
                   {typeof chestVal === 'number' ? `${chestVal} ${unit}` : `-- ${unit}`}
                 </span>
               </div>
             </div>
 
-            <div className="bg-black/40 rounded-2xl p-4 border border-white/10 text-xs space-y-1.5">
-              <div className="flex justify-between text-slate-300 text-xs">
+            <div className="bg-neutral-50 rounded-xl p-4 border border-neutral-200/80 text-xs space-y-2">
+              <div className="flex justify-between text-neutral-600">
                 <span>{t('heroGarmentDim')}</span>
-                <span className="font-mono font-bold text-white">
+                <span className="font-mono font-bold text-neutral-900">
                   {recommendation?.primaryMargins?.[0]
                     ? `${(recommendation.primaryMargins[0].garmentDimensionMm / (unit === 'in' ? 25.4 : 10)).toFixed(1)} ${unit}`
                     : `42.0 ${unit}`}
                 </span>
               </div>
-              <div className="flex justify-between text-emerald-400 text-xs font-semibold">
+              <div className="flex justify-between text-neutral-900 font-semibold">
                 <span>{t('heroErgoEase')}</span>
-                <span className="font-mono">
+                <span className="font-mono text-emerald-800">
                   {recommendation?.primaryMargins?.[0]
                     ? `+${recommendation.primaryMargins[0].easeInches}" (${recommendation.primaryMargins[0].easeMm} mm)`
                     : `+3.0" (76 mm)`}
@@ -191,16 +187,16 @@ export default function ConsumerHomePage() {
               </div>
             </div>
 
-            {/* Live Fast Presets */}
+            {/* Tactile Fabric Swatch Presets */}
             <div className="space-y-2 pt-1">
-              <span className="text-xs text-slate-300 block font-semibold">{t('heroPresetsLabel')}</span>
+              <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block font-semibold">{t('heroPresetsLabel')}</span>
               <div className="grid grid-cols-4 gap-2">
                 {[38.0, 39.0, 40.0, 42.0].map((val) => (
                   <button
                     key={val}
                     type="button"
                     onClick={() => handleApplyPreset(unit === 'in' ? val : Math.round(val * 2.54))}
-                    className="py-2 px-2.5 bg-white/5 hover:bg-amber-400/20 hover:border-amber-400/40 rounded-xl text-xs font-bold text-center border border-white/15 transition min-h-[40px]"
+                    className="py-2.5 px-2 bg-white hover:bg-black hover:text-white rounded-lg text-xs font-mono font-medium text-center border border-neutral-200 transition min-h-[38px]"
                   >
                     {unit === 'in' ? `${val}"` : `${Math.round(val * 2.54)}cm`}
                   </button>
@@ -210,38 +206,43 @@ export default function ConsumerHomePage() {
           </div>
         </div>
 
-        {/* Live Metrics Trust Strip */}
-        <div className="w-full mt-14 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center select-none">
-          <div>
-            <span className="block text-2xl sm:text-4xl font-black text-white">{t('metricBrands')}</span>
-            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">{t('metricBrandsSub')}</span>
+        {/* Live Metrics Trust Strip — Minimalist Editorial Style */}
+        <div className="w-full mt-16 pt-10 border-t border-neutral-200/80 grid grid-cols-2 md:grid-cols-4 gap-8 text-left select-none">
+          <div className="space-y-1">
+            <span className="text-xs font-mono text-neutral-400 block">01 / RETAIL</span>
+            <span className="block text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">{t('metricBrands')}</span>
+            <span className="text-xs text-neutral-500 block">{t('metricBrandsSub')}</span>
           </div>
-          <div>
-            <span className="block text-2xl sm:text-4xl font-black text-emerald-400">{t('metricPhotos')}</span>
-            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">{t('metricPhotosSub')}</span>
+          <div className="space-y-1">
+            <span className="text-xs font-mono text-neutral-400 block">02 / PRIVACY</span>
+            <span className="block text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">{t('metricPhotos')}</span>
+            <span className="text-xs text-neutral-500 block">{t('metricPhotosSub')}</span>
           </div>
-          <div>
-            <span className="block text-2xl sm:text-4xl font-black text-amber-300">{t('metricEase')}</span>
-            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">{t('metricEaseSub')}</span>
+          <div className="space-y-1">
+            <span className="text-xs font-mono text-neutral-400 block">03 / CALIBRATION</span>
+            <span className="block text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">{t('metricEase')}</span>
+            <span className="text-xs text-neutral-500 block">{t('metricEaseSub')}</span>
           </div>
-          <div>
-            <span className="block text-2xl sm:text-4xl font-black text-white">{t('metricSpeed')}</span>
-            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">{t('metricSpeedSub')}</span>
+          <div className="space-y-1">
+            <span className="text-xs font-mono text-neutral-400 block">04 / LATENCY</span>
+            <span className="block text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">{t('metricSpeed')}</span>
+            <span className="text-xs text-neutral-500 block">{t('metricSpeedSub')}</span>
           </div>
         </div>
       </section>
 
-      {/* 3. Fluid Full-Viewport Sizing Engine Canvas */}
-      <main id="sizing-engine" className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 space-y-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-amber-900/10 pb-5">
+      {/* 3. Fluid Sizing Engine Canvas */}
+      <main id="sizing-engine" className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-14 sm:py-20 space-y-12">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-neutral-200 pb-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-50 border border-amber-300/80 px-3.5 py-1.5 rounded-full">
-              {t('enginePill')}
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2.5">
+            <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 mb-2">
+              <span className="font-bold text-neutral-900">02 /</span>
+              <span>{t('enginePill')}</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900">
               {t('engineTitle')}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            <p className="text-xs sm:text-sm text-neutral-500 mt-1 max-w-xl">
               {t('engineSub')}
             </p>
           </div>
@@ -249,36 +250,36 @@ export default function ConsumerHomePage() {
           <button
             type="button"
             onClick={toggleUnit}
-            className="text-xs font-bold text-amber-950 bg-amber-50/80 hover:bg-amber-100 border border-amber-300/60 px-5 py-2.5 rounded-xl transition min-h-[44px] flex items-center space-x-2"
+            className="text-xs font-medium text-neutral-900 bg-white hover:bg-neutral-50 border border-neutral-300 hover:border-black px-4 py-2.5 rounded-lg transition min-h-[40px] flex items-center space-x-2 shadow-sm"
           >
             <span>{t('activeUnitLabel')}</span>
-            <span className="font-mono bg-white px-2 py-0.5 rounded shadow-sm text-amber-950 font-black border border-amber-200">
+            <span className="font-mono bg-neutral-100 px-2 py-0.5 rounded text-black font-bold">
               {unit.toUpperCase()}
             </span>
-            <span>{t('clickToSwitch')}</span>
+            <span className="text-neutral-400">{t('clickToSwitch')}</span>
           </button>
         </div>
 
         {/* 12-Column Responsive Sizing Grid Spanning Full Width */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start w-full">
           {/* Left Column: Inputs & Interactive Visual Cut (5 cols) */}
-          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm space-y-6">
-            <h3 id="garment-input-heading" className="text-xs font-bold uppercase tracking-wider text-slate-600 pb-3 border-b border-slate-100 flex items-center justify-between">
+          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-neutral-200 shadow-sm space-y-6">
+            <h3 id="garment-input-heading" className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 pb-3 border-b border-neutral-100 flex items-center justify-between">
               <span>{t('step1Heading')}</span>
-              <span className="text-amber-900 font-bold">{t('inputPanel')}</span>
+              <span className="text-neutral-900 font-bold">{t('inputPanel')}</span>
             </h3>
 
             <div className="space-y-5">
               {/* Brand Selector */}
               <div>
-                <label htmlFor="brand-dropdown" className="block text-xs font-bold text-slate-800 mb-1.5">
+                <label htmlFor="brand-dropdown" className="block text-xs font-semibold uppercase tracking-wider text-neutral-800 mb-1.5">
                   {t('selectBrandLabel')}
                 </label>
                 <select
                   id="brand-dropdown"
                   value={selectedBrand}
                   onChange={(e) => setSelectedBrand(e.target.value)}
-                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-amber-500 min-h-[48px] transition text-slate-900"
+                  className="w-full text-xs sm:text-sm font-medium border border-neutral-300 rounded-xl p-3.5 bg-white focus:border-black focus:ring-1 focus:ring-black outline-none min-h-[48px] transition text-neutral-900"
                 >
                   {brands.map((b) => (
                     <option key={b.slug} value={b.slug}>
@@ -290,14 +291,14 @@ export default function ConsumerHomePage() {
 
               {/* Garment Category & Cut */}
               <div>
-                <label htmlFor="category-dropdown" className="block text-xs font-bold text-slate-800 mb-1.5">
+                <label htmlFor="category-dropdown" className="block text-xs font-semibold uppercase tracking-wider text-neutral-800 mb-1.5">
                   {t('selectCategoryLabel')}
                 </label>
                 <select
                   id="category-dropdown"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-amber-500 min-h-[48px] transition text-slate-900"
+                  className="w-full text-xs sm:text-sm font-medium border border-neutral-300 rounded-xl p-3.5 bg-white focus:border-black focus:ring-1 focus:ring-black outline-none min-h-[48px] transition text-neutral-900"
                 >
                   <option value="SHIRT_CASUAL">Casual Shirt (Modern Slim: +3.0" Ease)</option>
                   <option value="SHIRT_FORMAL">Formal Dress Shirt (Classic Cut: +4.0" Ease)</option>
@@ -336,10 +337,10 @@ export default function ConsumerHomePage() {
 
               {/* Fit Preference Selector */}
               <div>
-                <label className="block text-xs font-bold text-slate-800 mb-2">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-800 mb-2">
                   {t('fitPrefLabel')}
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-2 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
                   {(['SNUG', 'REGULAR', 'RELAXED'] as const).map((pref) => {
                     const prefLabels = {
                       SNUG: t('prefSnug'),
@@ -352,10 +353,10 @@ export default function ConsumerHomePage() {
                         key={pref}
                         type="button"
                         onClick={() => setPreference(pref)}
-                        className={`py-3 px-2 text-xs font-bold rounded-xl border transition min-h-[48px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                        className={`py-2.5 px-2 text-xs font-medium rounded-lg transition min-h-[40px] flex items-center justify-center ${
                           isSelected
-                            ? 'bg-slate-950 text-amber-300 border-amber-400/50 shadow-md ring-1 ring-amber-400/30'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                            ? 'bg-black text-white font-bold shadow-sm'
+                            : 'text-neutral-600 hover:text-black'
                         }`}
                       >
                         {prefLabels[pref]}
@@ -370,30 +371,30 @@ export default function ConsumerHomePage() {
           {/* Right Column: Sizing Recommendation Output & Visual Ease (7 cols) */}
           <section aria-labelledby="recommendation-heading" className="lg:col-span-7 space-y-6">
             {recommendation && !recommendation.isAbstention && recommendation.recommendedSize ? (
-              <div className="bg-white rounded-3xl p-6 sm:p-9 border-2 border-amber-500/80 shadow-xl shadow-amber-900/5 space-y-6">
-                <div className="flex justify-between items-center pb-4 border-b border-slate-100">
+              <div className="bg-white rounded-2xl p-7 sm:p-9 border-2 border-neutral-900 shadow-sm space-y-6">
+                <div className="flex justify-between items-center pb-4 border-b border-neutral-100">
                   <SizeBadge
                     status="OPTIMAL"
                     showPercentage={false}
                   />
-                  <span className="text-xs text-slate-500 font-semibold">
+                  <span className="text-xs font-mono text-neutral-500 font-medium">
                     {selectedBrand.charAt(0).toUpperCase() + selectedBrand.slice(1)} {t('spectrumLabel')}
                   </span>
                 </div>
 
                 <div>
-                  <h3 id="recommendation-heading" className="text-xs uppercase font-bold tracking-wider text-slate-500">
+                  <h3 id="recommendation-heading" className="text-xs uppercase font-mono font-semibold tracking-wider text-neutral-400">
                     {t('recFitHeading')}
                   </h3>
                   <div className="flex flex-wrap items-baseline gap-4 mt-2">
-                    <span className="text-6xl sm:text-7xl font-black text-slate-900 tracking-tight">
+                    <span className="text-6xl sm:text-7xl font-black text-neutral-900 tracking-tight">
                       {recommendation.recommendedSize}
                     </span>
-                    <span className="text-sm font-bold text-emerald-800 bg-emerald-50 border border-emerald-300/60 px-3.5 py-1.5 rounded-xl">
+                    <span className="text-xs font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg">
                       {preference} {t('fitCalibrated')}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-500 mt-1.5">
+                  <p className="text-xs text-neutral-500 mt-1.5">
                     {t('mappedAgainst')}
                   </p>
                 </div>
@@ -405,8 +406,8 @@ export default function ConsumerHomePage() {
                   unit={unit}
                 />
 
-                <div className="bg-amber-50/60 border border-amber-200/80 p-4 sm:p-5 rounded-2xl text-xs sm:text-sm text-slate-800 leading-relaxed space-y-1.5">
-                  <div className="font-bold text-amber-950 text-sm sm:text-base">{t('whyWeRec')} {recommendation.recommendedSize}:</div>
+                <div className="bg-neutral-50 border border-neutral-200 p-5 rounded-xl text-xs sm:text-sm text-neutral-800 leading-relaxed space-y-1.5">
+                  <div className="font-bold text-neutral-900 text-sm sm:text-base">{t('whyWeRec')} {recommendation.recommendedSize}:</div>
                   <p>{recommendation.explanation}</p>
                 </div>
 
@@ -414,13 +415,13 @@ export default function ConsumerHomePage() {
                 {recommendation.primaryMargins.length > 0 && (
                   <div className="space-y-3 pt-2">
                     <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                      <h4 className="text-xs font-semibold text-neutral-700 uppercase tracking-wider">
                         {t('easeTorsoHeading')}
                       </h4>
                       <button
                         type="button"
                         onClick={() => setShowDetails(!showDetails)}
-                        className="text-xs font-bold text-amber-900 hover:text-amber-950 flex items-center space-x-1 py-1"
+                        className="text-xs font-medium text-neutral-600 hover:text-black flex items-center space-x-1 py-1 underline"
                       >
                         <span>{showDetails ? t('hideDetails') : t('showDetails')}</span>
                       </button>
@@ -438,19 +439,19 @@ export default function ConsumerHomePage() {
                 )}
 
                 {/* Fit Feedback Section */}
-                <div className="pt-4 border-t border-slate-200 space-y-3">
+                <div className="pt-4 border-t border-neutral-200 space-y-3">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                    <span className="text-xs font-semibold text-slate-700">
+                    <span className="text-xs font-medium text-neutral-700">
                       {t('feedbackPrompt')} {selectedBrand.charAt(0).toUpperCase() + selectedBrand.slice(1)}?
                     </span>
                     <div className="flex items-center space-x-2">
                       <button
                         type="button"
                         onClick={() => setFeedbackState('SUBMITTED')}
-                        className={`text-xs font-bold px-4 py-2 rounded-xl border transition min-h-[44px] ${
+                        className={`text-xs font-medium px-4 py-2 rounded-lg border transition min-h-[40px] ${
                           feedbackState === 'SUBMITTED'
-                            ? 'bg-emerald-600 text-white border-emerald-600'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                            ? 'bg-black text-white border-black font-semibold'
+                            : 'bg-white text-neutral-700 border-neutral-300 hover:border-black'
                         }`}
                       >
                         {t('btnGoodFit')}
@@ -458,10 +459,10 @@ export default function ConsumerHomePage() {
                       <button
                         type="button"
                         onClick={() => setFeedbackState('ADJUSTMENT_NEEDED')}
-                        className={`text-xs font-bold px-4 py-2 rounded-xl border transition min-h-[44px] ${
+                        className={`text-xs font-medium px-4 py-2 rounded-lg border transition min-h-[40px] ${
                           feedbackState === 'ADJUSTMENT_NEEDED'
-                            ? 'bg-amber-600 text-white border-amber-600'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                            ? 'bg-neutral-900 text-white border-black font-semibold'
+                            : 'bg-white text-neutral-700 border-neutral-300 hover:border-black'
                         }`}
                       >
                         {t('btnNeedsAdj')}
@@ -470,8 +471,8 @@ export default function ConsumerHomePage() {
                   </div>
 
                   {feedbackState === 'ADJUSTMENT_NEEDED' && (
-                    <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2 text-xs">
-                      <label htmlFor="feedback-input" className="font-bold text-amber-900 block">
+                    <div className="p-4 bg-neutral-50 border border-neutral-200 rounded-xl space-y-2 text-xs">
+                      <label htmlFor="feedback-input" className="font-semibold text-neutral-900 block">
                         What felt different?
                       </label>
                       <div className="flex space-x-2">
@@ -481,12 +482,12 @@ export default function ConsumerHomePage() {
                           value={adjustmentFeedback}
                           onChange={(e) => setAdjustmentFeedback(e.target.value)}
                           placeholder="e.g., Felt tighter in shoulders than expected"
-                          className="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-xs outline-none focus:ring-2 focus:ring-amber-500"
+                          className="w-full px-3.5 py-2.5 border border-neutral-300 rounded-lg text-xs outline-none focus:border-black focus:ring-1 focus:ring-black bg-white"
                         />
                         <button
                           type="button"
                           onClick={() => setFeedbackState('SUBMITTED')}
-                          className="bg-amber-600 text-white font-bold px-5 py-2.5 rounded-lg text-xs whitespace-nowrap min-h-[44px]"
+                          className="bg-black hover:bg-neutral-800 text-white font-medium px-5 py-2.5 rounded-lg text-xs whitespace-nowrap min-h-[40px]"
                         >
                           Submit
                         </button>
@@ -495,7 +496,7 @@ export default function ConsumerHomePage() {
                   )}
 
                   {feedbackState === 'SUBMITTED' && (
-                    <p className="text-xs text-emerald-700 font-semibold" role="status">
+                    <p className="text-xs text-emerald-800 font-medium" role="status">
                       {t('feedbackThanks')}
                     </p>
                   )}
@@ -503,20 +504,20 @@ export default function ConsumerHomePage() {
               </div>
             ) : (
               /* Helpful Abstention Guidance */
-              <div className="bg-white rounded-3xl p-10 border border-slate-200 shadow-sm space-y-5 text-center">
-                <div className="w-16 h-16 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-center mx-auto text-amber-600 text-3xl">
+              <div className="bg-white rounded-2xl p-10 border border-neutral-200 shadow-sm space-y-5 text-center">
+                <div className="w-14 h-14 bg-neutral-100 rounded-xl border border-neutral-200 flex items-center justify-center mx-auto text-neutral-800 text-2xl">
                   📏
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">
+                <h3 className="text-xl font-bold text-neutral-900">
                   {t('abstentionPrompt')}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-500 max-w-lg mx-auto leading-relaxed">
                   {t('abstentionSub')}
                 </p>
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="bg-slate-950 hover:bg-slate-900 text-amber-300 border border-amber-400/40 font-bold px-6 py-3.5 rounded-xl transition text-xs sm:text-sm shadow-sm min-h-[44px]"
+                  className="bg-black hover:bg-neutral-800 text-white font-medium px-6 py-3.5 rounded-xl transition text-xs sm:text-sm shadow-sm min-h-[44px]"
                 >
                   {t('heroCtaGuide')}
                 </button>
@@ -525,16 +526,17 @@ export default function ConsumerHomePage() {
           </section>
         </div>
 
-        {/* 4. Fluid Full-Width Interactive Visual Measurement Showcase Section */}
-        <section id="visual-guides" className="w-full bg-[#0A0C13] text-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl border border-amber-400/20 space-y-8">
-          <div className="border-b border-white/10 pb-5">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 border border-amber-600/40 px-3.5 py-1.5 rounded-full">
-              {t('showcasePill')}
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-3">
+        {/* 4. Interactive Visual Measurement Showcase Section */}
+        <section id="visual-guides" className="w-full bg-[#18181B] text-white rounded-2xl p-7 sm:p-12 shadow-sm border border-neutral-800 space-y-8">
+          <div className="border-b border-neutral-800 pb-5">
+            <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-400 mb-2">
+              <span className="text-white font-bold">03 /</span>
+              <span>{t('showcasePill')}</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
               {t('showcaseTitle')}
             </h3>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm text-neutral-400 mt-1 max-w-2xl">
               {t('showcaseSub')}
             </p>
           </div>
@@ -542,7 +544,7 @@ export default function ConsumerHomePage() {
           {/* Side-by-Side Dual Interactive Visual Guides on Wide Screens */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full">
             <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-200/90 block">
+              <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold">
                 {t('methodA')}
               </span>
               <BodyMeasurementVisualGuide
@@ -555,7 +557,7 @@ export default function ConsumerHomePage() {
             </div>
 
             <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-300 block">
+              <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold">
                 {t('methodB')}
               </span>
               <GarmentFlatVisualGuide
@@ -567,16 +569,17 @@ export default function ConsumerHomePage() {
           </div>
         </section>
 
-        {/* 5. Fluid Supported Retail Brands Directory Across Full Width */}
+        {/* 5. Supported Retail Brands Directory Across Full Width */}
         <section id="supported-brands" className="w-full space-y-6">
           <div className="text-center max-w-3xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-50 border border-amber-300/80 px-3.5 py-1.5 rounded-full">
-              {t('brandDirPill')}
-            </span>
-            <h3 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            <div className="inline-flex items-center space-x-2 text-xs font-mono font-medium tracking-wider text-neutral-600 mb-1">
+              <span className="font-bold text-neutral-900">04 /</span>
+              <span>{t('brandDirPill')}</span>
+            </div>
+            <h3 className="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
               {t('brandDirTitle')}
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500">
+            <p className="text-xs sm:text-sm text-neutral-500">
               {t('brandDirSub')}
             </p>
           </div>
@@ -593,27 +596,27 @@ export default function ConsumerHomePage() {
                     const el = document.getElementById('sizing-engine');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className={`p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-amber-50/70 border-amber-500 shadow-md ring-2 ring-amber-500/20'
-                      : 'bg-white border-slate-200 hover:border-amber-300 hover:shadow-sm'
+                      ? 'bg-neutral-50 border-black shadow-sm ring-1 ring-black'
+                      : 'bg-white border-neutral-200 hover:border-neutral-400'
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-black text-slate-900 text-base">{b.name}</h4>
+                      <h4 className="font-bold text-neutral-900 text-base">{b.name}</h4>
                       {isSelected && (
-                        <span className="text-[10px] font-bold bg-slate-950 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full">
+                        <span className="text-[10px] font-mono font-semibold bg-black text-white px-2 py-0.5 rounded">
                           {t('activeBrand')}
                         </span>
                       )}
                     </div>
-                    <span className="text-[11px] font-bold text-amber-900 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg inline-block mb-2">
+                    <span className="text-[11px] font-mono font-medium text-neutral-700 bg-neutral-100 border border-neutral-200 px-2 py-1 rounded inline-block mb-2">
                       {b.basis}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-500 mt-2">
-                    {t('cutLabel')} <strong className="text-slate-800">{b.cut}</strong>
+                  <p className="text-xs text-neutral-500 mt-2">
+                    {t('cutLabel')} <strong className="text-neutral-800 font-medium">{b.cut}</strong>
                   </p>
                 </div>
               );

@@ -29,17 +29,17 @@ export const LanguageSwitcher: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label="Select Language"
-        className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-50 hover:bg-amber-50/60 border border-slate-200 hover:border-amber-300/80 rounded-xl text-xs font-bold text-slate-800 transition min-h-[38px] shadow-sm"
+        className="flex items-center space-x-1.5 px-3 py-1.5 bg-white hover:bg-neutral-50 border border-neutral-200 hover:border-neutral-400 rounded-lg text-xs font-medium text-neutral-800 transition min-h-[36px]"
       >
-        <span className="text-sm">🌐</span>
-        <span>{currentOption.nativeLabel}</span>
-        <span className="text-[10px] text-slate-400">▾</span>
+        <span className="text-xs">🌐</span>
+        <span className="font-semibold">{currentOption.nativeLabel}</span>
+        <span className="text-[10px] text-neutral-400">▾</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white border border-amber-900/15 rounded-2xl shadow-xl shadow-slate-900/10 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-          <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 mb-1">
-            Regional Dialect
+        <div className="absolute right-0 mt-2 w-48 bg-white border border-neutral-200 rounded-xl shadow-xl shadow-neutral-900/5 py-1 z-50 animate-in fade-in zoom-in-95 duration-100">
+          <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-neutral-400 border-b border-neutral-100 mb-1">
+            Regional Language
           </div>
           {SUPPORTED_LANGUAGES.map((opt) => (
             <button
@@ -49,17 +49,17 @@ export const LanguageSwitcher: React.FC = () => {
                 setLanguage(opt.code);
                 setIsOpen(false);
               }}
-              className={`w-full text-left px-3.5 py-2 text-xs font-bold flex items-center justify-between transition ${
+              className={`w-full text-left px-3 py-2 text-xs font-medium flex items-center justify-between transition ${
                 opt.code === language
-                  ? 'bg-amber-50 text-amber-950 font-black'
-                  : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
+                  ? 'bg-neutral-100 text-black font-semibold'
+                  : 'text-neutral-700 hover:bg-neutral-50 hover:text-black'
               }`}
             >
               <div className="flex flex-col">
                 <span className="text-xs">{opt.nativeLabel}</span>
-                <span className="text-[10px] text-slate-400 font-normal">{opt.label}</span>
+                <span className="text-[10px] text-neutral-400">{opt.label}</span>
               </div>
-              {opt.code === language && <span className="text-amber-600 text-xs font-black">✓</span>}
+              {opt.code === language && <span className="text-black text-xs font-bold">✓</span>}
             </button>
           ))}
         </div>

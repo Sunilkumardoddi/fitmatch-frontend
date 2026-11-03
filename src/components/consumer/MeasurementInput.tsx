@@ -33,15 +33,15 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
   return (
     <div className="space-y-2 select-none">
       <div className="flex justify-between items-baseline">
-        <label htmlFor={id} className="text-xs font-bold text-slate-800 tracking-wide flex items-center space-x-1.5">
+        <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wider text-neutral-800 flex items-center space-x-1.5">
           <span>{label}</span>
         </label>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-3 text-xs">
           {onOpenGuide && (
             <button
               type="button"
               onClick={onOpenGuide}
-              className="text-xs font-bold text-amber-900 hover:text-amber-950 focus:outline-none focus-visible:underline"
+              className="font-medium text-neutral-600 hover:text-black underline underline-offset-2 transition"
             >
               How to measure
             </button>
@@ -50,7 +50,7 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
             <button
               type="button"
               onClick={onUnitToggle}
-              className="text-xs font-semibold text-slate-500 hover:text-slate-800 focus:outline-none focus-visible:underline"
+              className="font-medium text-neutral-500 hover:text-black transition"
             >
               Switch to {unit === 'in' ? 'cm' : 'in'}
             </button>
@@ -59,11 +59,11 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
       </div>
 
       {sublabel && (
-        <p className="text-xs text-slate-500 leading-normal">{sublabel}</p>
+        <p className="text-xs text-neutral-500 leading-normal">{sublabel}</p>
       )}
 
       {/* Dual Input: Numeric Box + Live Range Slider */}
-      <div className={`relative rounded-2xl border min-h-[50px] ${isOutOfRange ? 'border-amber-400 bg-amber-50/30' : 'border-slate-300 bg-white'} focus-within:border-amber-500 focus-within:ring-2 focus-within:ring-amber-500 focus-within:ring-offset-2 transition overflow-hidden flex items-center shadow-sm`}>
+      <div className={`relative rounded-xl border min-h-[48px] ${isOutOfRange ? 'border-amber-400 bg-amber-50/30' : 'border-neutral-300 bg-white'} focus-within:border-black focus-within:ring-1 focus-within:ring-black transition overflow-hidden flex items-center shadow-sm`}>
         <input
           id={id}
           type="number"
@@ -77,22 +77,22 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
             const val = e.target.value === '' ? '' : parseFloat(e.target.value);
             onChange(isNaN(val as number) ? '' : val);
           }}
-          className="w-full px-4 py-3 text-base font-black text-slate-900 outline-none bg-transparent"
+          className="w-full px-4 py-2.5 text-base font-bold text-neutral-900 outline-none bg-transparent"
           placeholder={`e.g. ${unit === 'in' ? '39.0' : '99'}`}
         />
         <div className="flex items-center space-x-2 pr-4">
-          <span className="text-xs font-mono font-bold text-amber-950 bg-amber-50 border border-amber-300/80 px-2 py-0.5 rounded uppercase tracking-wider">
+          <span className="text-xs font-mono font-medium text-neutral-600 bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded uppercase">
             {unit}
           </span>
         </div>
       </div>
 
-      {/* Interactive Range Slider */}
+      {/* Interactive Range Slider — Tailor Tape Style */}
       {showSlider && typeof value === 'number' && (
         <div className="space-y-1.5 pt-1 px-1">
-          <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 font-semibold">
+          <div className="flex justify-between items-center text-[10px] font-mono text-neutral-400">
             <span>{min} {unit}</span>
-            <span className="text-amber-950 font-bold bg-amber-50 border border-amber-300/80 px-2.5 py-0.5 rounded-full text-[11px]">
+            <span className="text-black font-semibold bg-neutral-100 border border-neutral-200 px-2.5 py-0.5 rounded-full text-[11px]">
               Drag to adjust: {value} {unit}
             </span>
             <span>{max} {unit}</span>
@@ -104,14 +104,14 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
             step="0.5"
             value={numericVal}
             onChange={(e) => onChange(parseFloat(e.target.value))}
-            className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+            className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-black focus:outline-none"
             aria-label={`${label} slider`}
           />
         </div>
       )}
 
       {isOutOfRange && (
-        <p className="text-xs text-amber-700 font-semibold" role="alert">
+        <p className="text-xs text-amber-700 font-medium" role="alert">
           Typical adult measurements fall between {min} and {max} {unit}. Please double-check your tape reading.
         </p>
       )}
