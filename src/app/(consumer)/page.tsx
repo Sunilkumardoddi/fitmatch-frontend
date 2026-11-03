@@ -7,6 +7,7 @@ import { MeasurementInput } from '../../components/ui/MeasurementInput';
 import { FitVisualizer } from '../../components/ui/FitVisualizer';
 import { PrivacyDrawer } from '../../components/ui/PrivacyDrawer';
 import { GuidedMeasurementModal } from '../../components/ui/GuidedMeasurementModal';
+import { GarmentCutVisualizer } from '../../components/consumer/GarmentCutVisualizer';
 
 export default function ConsumerHomePage() {
   const [unit, setUnit] = useState<'in' | 'cm'>('in');
@@ -166,6 +167,13 @@ export default function ConsumerHomePage() {
               </select>
             </div>
 
+            {/* Interactive Garment Pattern Cut & Sizing Guidelines */}
+            <GarmentCutVisualizer
+              categoryCode={selectedCategory}
+              unit={unit}
+              onGuideClick={() => setIsGuideOpen(true)}
+            />
+
             <MeasurementInput
               id="chest-measure"
               label="Chest Measurement (Required)"
@@ -268,6 +276,7 @@ export default function ConsumerHomePage() {
                         margin={recommendation.primaryMargins[0]}
                         unit={unit}
                         dimensionLabel="Chest"
+                        preference={preference}
                       />
                     </div>
                   )}
