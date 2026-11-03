@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useLanguage } from '../../lib/i18n/LanguageContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export interface ConsumerNavbarProps {
   unit: 'in' | 'cm';
@@ -16,9 +18,11 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
   onOpenGuide,
   onOpenPrivacy,
 }) => {
+  const { t } = useLanguage();
+
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all select-none">
-      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between gap-6">
+      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between gap-4">
         {/* Brand Logo & Tagline */}
         <div className="flex items-center space-x-3">
           <Link href="/" className="flex items-center space-x-3 group">
@@ -33,46 +37,49 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
                   FitMatch
                 </span>
                 <span className="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 py-0.5 rounded-full">
-                  Deterministic Fit
+                  {t('brandTag')}
                 </span>
               </div>
               <p className="hidden md:block text-xs text-slate-500 font-medium">
-                Privacy-First Apparel Sizing for Indian Fashion
+                {t('brandSub')}
               </p>
             </div>
           </Link>
         </div>
 
         {/* Center Navigation Links */}
-        <nav className="hidden lg:flex items-center space-x-8 text-xs font-bold text-slate-600">
+        <nav className="hidden lg:flex items-center space-x-7 text-xs font-bold text-slate-600">
           <a href="#sizing-engine" className="hover:text-indigo-600 transition-colors py-1">
-            Sizing Engine
+            {t('navSizing')}
           </a>
           <button
             type="button"
             onClick={onOpenGuide}
             className="hover:text-indigo-600 transition-colors py-1 flex items-center space-x-1.5"
           >
-            <span>Visual Guides</span>
+            <span>{t('navGuides')}</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           </button>
           <a href="#supported-brands" className="hover:text-indigo-600 transition-colors py-1">
-            Supported Brands (6)
+            {t('navBrands')}
           </a>
           <button
             type="button"
             onClick={onOpenPrivacy}
             className="hover:text-indigo-600 transition-colors py-1 flex items-center space-x-1.5"
           >
-            <span>DPDP Privacy</span>
+            <span>{t('navPrivacy')}</span>
             <span className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold">
-              Verified
+              {t('verifiedBadge')}
             </span>
           </button>
         </nav>
 
         {/* Right Action Controls */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2.5">
+          {/* Language Switcher Dropdown */}
+          <LanguageSwitcher />
+
           {/* Unit Toggle Pill */}
           <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
             <button
@@ -82,7 +89,7 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
                 unit === 'in' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              INCHES
+              IN
             </button>
             <button
               type="button"
@@ -99,10 +106,10 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
           <button
             type="button"
             onClick={onOpenGuide}
-            className="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold px-4 py-2.5 rounded-xl transition min-h-[42px] flex items-center space-x-2 focus-visible:ring-2 focus-visible:ring-indigo-600"
+            className="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold px-3.5 py-2 rounded-xl transition min-h-[38px] flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-indigo-600"
           >
             <span>📏</span>
-            <span className="hidden sm:inline">Visual Guide</span>
+            <span className="hidden sm:inline">{t('howToMeasureBtn')}</span>
           </button>
 
           {/* Privacy Center Button */}
@@ -110,10 +117,10 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
             type="button"
             onClick={onOpenPrivacy}
             aria-label="Open Privacy Center"
-            className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold px-4 py-2.5 rounded-xl transition min-h-[42px] flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-slate-400"
+            className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold px-3 py-2 rounded-xl transition min-h-[38px] flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-slate-400"
           >
             <span>🔒</span>
-            <span className="hidden md:inline">Privacy</span>
+            <span className="hidden md:inline">{t('privacyBtn')}</span>
           </button>
 
           {/* Operator Portal Link */}
@@ -121,7 +128,7 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
             href="/admin"
             className="text-xs font-bold text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-xl transition whitespace-nowrap hidden xl:inline-block bg-slate-50 border border-slate-200 hover:bg-slate-100"
           >
-            Operator Portal &rarr;
+            {t('operatorPortal')}
           </Link>
         </div>
       </div>
