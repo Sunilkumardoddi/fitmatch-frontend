@@ -16,12 +16,19 @@
   --radius-lg: 0.75rem;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem; /* Ensures sticky navbar never overlaps target elements */
+}
+
 body {
   color: #111111;
   background: #FAFAF8;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .font-editorial {
@@ -33,8 +40,27 @@ body {
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
+   PERFORMANCE & SMOOTH TRANSITIONS
+────────────────────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+button, a, input, select {
+  transition-property: transform, opacity, background-color, border-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hardware accelerated smooth hover states */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
    FUNCTIONAL THEMATIC BACKGROUND PATTERNS
-   Identifies each section's objective & purpose in the background canvas.
 ────────────────────────────────────────────────────────────────────────── */
 
 /* Section 01: Hero Atelier Measuring Tape Strip */

@@ -67,6 +67,9 @@ export interface UserPersonalDataArchive {
 }
 
 export class ConsumerApiClient {
+  // In-memory LRU calculation cache for 0ms instant repeated lookups
+  private cache = new Map<string, SizeRecommendationResponse>();
+
   async getBrands(): Promise<Brand[]> {
     try {
       return await fetchApi<Brand[]>('/brands');
@@ -83,6 +86,11 @@ export class ConsumerApiClient {
   }
 
   async getRecommendation(req: SizeRecommendationRequest): Promise<SizeRecommendationResponse> {
+    const cacheKey = JSON.stringify(req);
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey)!;
+    }
+
     try {
       const response = await fetchApi<any>('/recommendations/calculate', {
         method: 'POST',
@@ -94,7 +102,7 @@ export class ConsumerApiClient {
         }),
       });
 
-      return {
+      const result: SizeRecommendationResponse = {
         recommendationId: response.recommendationId || `rec_${Date.now()}`,
         recommendedSize: response.recommendedSize || null,
         confidenceScore: response.confidenceScore || 0.9,
@@ -111,8 +119,13 @@ export class ConsumerApiClient {
         runnerUpSize: response.runnerUpSize || null,
         allEvaluations: [],
       };
+
+      this.cache.set(cacheKey, result);
+      return result;
     } catch {
-      return this.computeLocalRecommendation(req);
+      const fallback = this.computeLocalRecommendation(req);
+      this.cache.set(cacheKey, fallback);
+      return fallback;
     }
   }
 

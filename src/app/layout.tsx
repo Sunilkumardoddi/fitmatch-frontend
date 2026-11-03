@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'FitMatch — Privacy-First Deterministic Apparel Sizing',
-  description: 'Deterministic, ease-aware clothing size recommendations for Indian fashion e-commerce.',
+  title: 'FitMatch — Studio Apparel Fit Engine for Indian Fashion',
+  description: 'Deterministic, pattern-calibrated clothing size recommendations for India\'s leading fashion brands.',
 };
 
 export default function RootLayout({
@@ -12,11 +12,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen antialiased bg-slate-50 text-slate-900">
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="min-h-screen antialiased bg-[#FAFAF8] text-neutral-900 selection:bg-neutral-900 selection:text-white">
         {children}
       </body>
     </html>
   );
 }
-
