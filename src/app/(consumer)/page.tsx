@@ -100,9 +100,9 @@ export default function ConsumerHomePage() {
       />
 
       {/* 2. Fluid Full-Viewport Hero Section */}
-      <section className="relative w-full bg-gradient-to-b from-[#0A0F1D] via-[#111827] to-[#1E1B4B] text-white py-14 sm:py-20 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
-        {/* Subtle Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-indigo-600/10 blur-3xl pointer-events-none rounded-full" />
+      <section className="relative w-full bg-gradient-to-b from-[#06070B] via-[#0D0F16] to-[#151722] text-white py-14 sm:py-20 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
+        {/* Subtle Background Glow with Champagne Gold & Emerald Halo */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-gradient-to-r from-amber-600/10 via-emerald-600/10 to-amber-500/10 blur-3xl pointer-events-none rounded-full" />
 
         <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 xl:gap-20">
           {/* Hero Left Content */}
@@ -112,14 +112,14 @@ export default function ConsumerHomePage() {
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>{t('heroBadge1')}</span>
               </span>
-              <span className="text-slate-300 text-xs bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
+              <span className="text-amber-200/90 text-xs bg-amber-400/10 border border-amber-400/25 px-3.5 py-1.5 rounded-full font-semibold">
                 {t('heroBadge2')}
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-tight">
               {t('heroTitlePart1')} <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-indigo-300 via-indigo-100 to-emerald-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-400 bg-clip-text text-transparent">
                 {t('heroTitlePart2')}
               </span>
             </h1>
@@ -131,7 +131,7 @@ export default function ConsumerHomePage() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
               <a
                 href="#sizing-engine"
-                className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-4 rounded-xl shadow-lg shadow-indigo-600/30 transition-all text-sm min-h-[48px] flex items-center space-x-2"
+                className="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-black px-7 py-4 rounded-xl shadow-lg shadow-amber-600/30 transition-all text-sm min-h-[48px] flex items-center space-x-2"
               >
                 <span>{t('heroCtaCalc')}</span>
                 <span>&darr;</span>
@@ -139,7 +139,7 @@ export default function ConsumerHomePage() {
               <button
                 type="button"
                 onClick={() => setIsGuideOpen(true)}
-                className="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-xl border border-white/20 transition-all text-sm min-h-[48px] flex items-center space-x-2"
+                className="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-xl border border-amber-300/30 transition-all text-sm min-h-[48px] flex items-center space-x-2"
               >
                 <span>📏 {t('heroCtaGuide')}</span>
               </button>
@@ -147,12 +147,12 @@ export default function ConsumerHomePage() {
           </div>
 
           {/* Hero Right: Live Interactive Quick-Match Card */}
-          <div className="w-full lg:w-[480px] xl:w-[540px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-7 shadow-2xl text-white space-y-5 flex-shrink-0">
+          <div className="w-full lg:w-[480px] xl:w-[540px] bg-[#12141D]/90 backdrop-blur-2xl border border-amber-400/25 rounded-3xl p-7 shadow-2xl shadow-black/80 text-white space-y-5 flex-shrink-0">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-300">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-300">
                 {t('heroQuickMatch')}
               </span>
-              <span className="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-3 py-1 rounded-full font-bold">
+              <span className="text-xs bg-amber-400/10 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full font-bold">
                 Snitch Casual Shirt
               </span>
             </div>
@@ -166,13 +166,13 @@ export default function ConsumerHomePage() {
               </div>
               <div className="text-right">
                 <span className="text-xs text-slate-300 block">{t('heroYourChest')}</span>
-                <span className="text-2xl font-bold font-mono text-emerald-300">
+                <span className="text-2xl font-bold font-mono text-amber-300">
                   {typeof chestVal === 'number' ? `${chestVal} ${unit}` : `-- ${unit}`}
                 </span>
               </div>
             </div>
 
-            <div className="bg-black/30 rounded-2xl p-4 border border-white/10 text-xs space-y-1.5">
+            <div className="bg-black/40 rounded-2xl p-4 border border-white/10 text-xs space-y-1.5">
               <div className="flex justify-between text-slate-300 text-xs">
                 <span>{t('heroGarmentDim')}</span>
                 <span className="font-mono font-bold text-white">
@@ -200,7 +200,7 @@ export default function ConsumerHomePage() {
                     key={val}
                     type="button"
                     onClick={() => handleApplyPreset(unit === 'in' ? val : Math.round(val * 2.54))}
-                    className="py-2 px-2.5 bg-white/10 hover:bg-white/20 rounded-xl text-xs font-bold text-center border border-white/15 transition min-h-[40px]"
+                    className="py-2 px-2.5 bg-white/5 hover:bg-amber-400/20 hover:border-amber-400/40 rounded-xl text-xs font-bold text-center border border-white/15 transition min-h-[40px]"
                   >
                     {unit === 'in' ? `${val}"` : `${Math.round(val * 2.54)}cm`}
                   </button>
@@ -221,7 +221,7 @@ export default function ConsumerHomePage() {
             <span className="text-xs sm:text-sm text-slate-400 mt-1 block">{t('metricPhotosSub')}</span>
           </div>
           <div>
-            <span className="block text-2xl sm:text-4xl font-black text-indigo-300">{t('metricEase')}</span>
+            <span className="block text-2xl sm:text-4xl font-black text-amber-300">{t('metricEase')}</span>
             <span className="text-xs sm:text-sm text-slate-400 mt-1 block">{t('metricEaseSub')}</span>
           </div>
           <div>
@@ -233,9 +233,9 @@ export default function ConsumerHomePage() {
 
       {/* 3. Fluid Full-Viewport Sizing Engine Canvas */}
       <main id="sizing-engine" className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 space-y-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-slate-200 pb-5">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-amber-900/10 pb-5">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-full">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-50 border border-amber-300/80 px-3.5 py-1.5 rounded-full">
               {t('enginePill')}
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2.5">
@@ -249,10 +249,10 @@ export default function ConsumerHomePage() {
           <button
             type="button"
             onClick={toggleUnit}
-            className="text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-5 py-2.5 rounded-xl transition min-h-[44px] flex items-center space-x-2"
+            className="text-xs font-bold text-amber-950 bg-amber-50/80 hover:bg-amber-100 border border-amber-300/60 px-5 py-2.5 rounded-xl transition min-h-[44px] flex items-center space-x-2"
           >
             <span>{t('activeUnitLabel')}</span>
-            <span className="font-mono bg-white px-2 py-0.5 rounded shadow-sm text-indigo-900 font-black">
+            <span className="font-mono bg-white px-2 py-0.5 rounded shadow-sm text-amber-950 font-black border border-amber-200">
               {unit.toUpperCase()}
             </span>
             <span>{t('clickToSwitch')}</span>
@@ -262,10 +262,10 @@ export default function ConsumerHomePage() {
         {/* 12-Column Responsive Sizing Grid Spanning Full Width */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start w-full">
           {/* Left Column: Inputs & Interactive Visual Cut (5 cols) */}
-          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm space-y-6">
             <h3 id="garment-input-heading" className="text-xs font-bold uppercase tracking-wider text-slate-600 pb-3 border-b border-slate-100 flex items-center justify-between">
               <span>{t('step1Heading')}</span>
-              <span className="text-indigo-600 font-bold">{t('inputPanel')}</span>
+              <span className="text-amber-900 font-bold">{t('inputPanel')}</span>
             </h3>
 
             <div className="space-y-5">
@@ -278,7 +278,7 @@ export default function ConsumerHomePage() {
                   id="brand-dropdown"
                   value={selectedBrand}
                   onChange={(e) => setSelectedBrand(e.target.value)}
-                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-indigo-600 min-h-[48px] transition text-slate-900"
+                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-amber-500 min-h-[48px] transition text-slate-900"
                 >
                   {brands.map((b) => (
                     <option key={b.slug} value={b.slug}>
@@ -297,7 +297,7 @@ export default function ConsumerHomePage() {
                   id="category-dropdown"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-indigo-600 min-h-[48px] transition text-slate-900"
+                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-amber-500 min-h-[48px] transition text-slate-900"
                 >
                   <option value="SHIRT_CASUAL">Casual Shirt (Modern Slim: +3.0" Ease)</option>
                   <option value="SHIRT_FORMAL">Formal Dress Shirt (Classic Cut: +4.0" Ease)</option>
@@ -352,9 +352,9 @@ export default function ConsumerHomePage() {
                         key={pref}
                         type="button"
                         onClick={() => setPreference(pref)}
-                        className={`py-3 px-2 text-xs font-bold rounded-xl border transition min-h-[48px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-indigo-600 ${
+                        className={`py-3 px-2 text-xs font-bold rounded-xl border transition min-h-[48px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-amber-500 ${
                           isSelected
-                            ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                            ? 'bg-slate-950 text-amber-300 border-amber-400/50 shadow-md ring-1 ring-amber-400/30'
                             : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                         }`}
                       >
@@ -370,7 +370,7 @@ export default function ConsumerHomePage() {
           {/* Right Column: Sizing Recommendation Output & Visual Ease (7 cols) */}
           <section aria-labelledby="recommendation-heading" className="lg:col-span-7 space-y-6">
             {recommendation && !recommendation.isAbstention && recommendation.recommendedSize ? (
-              <div className="bg-white rounded-3xl p-6 sm:p-9 border-2 border-indigo-600 shadow-md space-y-6">
+              <div className="bg-white rounded-3xl p-6 sm:p-9 border-2 border-amber-500/80 shadow-xl shadow-amber-900/5 space-y-6">
                 <div className="flex justify-between items-center pb-4 border-b border-slate-100">
                   <SizeBadge
                     status="OPTIMAL"
@@ -389,7 +389,7 @@ export default function ConsumerHomePage() {
                     <span className="text-6xl sm:text-7xl font-black text-slate-900 tracking-tight">
                       {recommendation.recommendedSize}
                     </span>
-                    <span className="text-sm font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-xl">
+                    <span className="text-sm font-bold text-emerald-800 bg-emerald-50 border border-emerald-300/60 px-3.5 py-1.5 rounded-xl">
                       {preference} {t('fitCalibrated')}
                     </span>
                   </div>
@@ -405,8 +405,8 @@ export default function ConsumerHomePage() {
                   unit={unit}
                 />
 
-                <div className="bg-indigo-50/80 border border-indigo-200 p-4 sm:p-5 rounded-2xl text-xs sm:text-sm text-slate-800 leading-relaxed space-y-1.5">
-                  <div className="font-bold text-indigo-950 text-sm sm:text-base">{t('whyWeRec')} {recommendation.recommendedSize}:</div>
+                <div className="bg-amber-50/60 border border-amber-200/80 p-4 sm:p-5 rounded-2xl text-xs sm:text-sm text-slate-800 leading-relaxed space-y-1.5">
+                  <div className="font-bold text-amber-950 text-sm sm:text-base">{t('whyWeRec')} {recommendation.recommendedSize}:</div>
                   <p>{recommendation.explanation}</p>
                 </div>
 
@@ -420,7 +420,7 @@ export default function ConsumerHomePage() {
                       <button
                         type="button"
                         onClick={() => setShowDetails(!showDetails)}
-                        className="text-xs font-bold text-indigo-700 hover:text-indigo-900 flex items-center space-x-1 py-1"
+                        className="text-xs font-bold text-amber-900 hover:text-amber-950 flex items-center space-x-1 py-1"
                       >
                         <span>{showDetails ? t('hideDetails') : t('showDetails')}</span>
                       </button>
@@ -516,7 +516,7 @@ export default function ConsumerHomePage() {
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3.5 rounded-xl transition text-xs sm:text-sm shadow-sm min-h-[44px]"
+                  className="bg-slate-950 hover:bg-slate-900 text-amber-300 border border-amber-400/40 font-bold px-6 py-3.5 rounded-xl transition text-xs sm:text-sm shadow-sm min-h-[44px]"
                 >
                   {t('heroCtaGuide')}
                 </button>
@@ -526,9 +526,9 @@ export default function ConsumerHomePage() {
         </div>
 
         {/* 4. Fluid Full-Width Interactive Visual Measurement Showcase Section */}
-        <section id="visual-guides" className="w-full bg-slate-900 text-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 space-y-8">
-          <div className="border-b border-slate-800 pb-5">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-400 bg-indigo-950/80 border border-indigo-800 px-3.5 py-1.5 rounded-full">
+        <section id="visual-guides" className="w-full bg-[#0A0C13] text-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl border border-amber-400/20 space-y-8">
+          <div className="border-b border-white/10 pb-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 border border-amber-600/40 px-3.5 py-1.5 rounded-full">
               {t('showcasePill')}
             </span>
             <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-3">
@@ -542,7 +542,7 @@ export default function ConsumerHomePage() {
           {/* Side-by-Side Dual Interactive Visual Guides on Wide Screens */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full">
             <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-300 block">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-200/90 block">
                 {t('methodA')}
               </span>
               <BodyMeasurementVisualGuide
@@ -570,7 +570,7 @@ export default function ConsumerHomePage() {
         {/* 5. Fluid Supported Retail Brands Directory Across Full Width */}
         <section id="supported-brands" className="w-full space-y-6">
           <div className="text-center max-w-3xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-full">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-50 border border-amber-300/80 px-3.5 py-1.5 rounded-full">
               {t('brandDirPill')}
             </span>
             <h3 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -595,25 +595,25 @@ export default function ConsumerHomePage() {
                   }}
                   className={`p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-indigo-50/90 border-indigo-500 shadow-md ring-2 ring-indigo-500/20'
-                      : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-sm'
+                      ? 'bg-amber-50/70 border-amber-500 shadow-md ring-2 ring-amber-500/20'
+                      : 'bg-white border-slate-200 hover:border-amber-300 hover:shadow-sm'
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-black text-slate-900 text-base">{b.name}</h4>
                       {isSelected && (
-                        <span className="text-[10px] font-bold bg-indigo-600 text-white px-2 py-0.5 rounded-full">
+                        <span className="text-[10px] font-bold bg-slate-950 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full">
                           {t('activeBrand')}
                         </span>
                       )}
                     </div>
-                    <span className="text-[11px] font-bold text-indigo-700 bg-slate-50 border border-indigo-200 px-2.5 py-1 rounded-lg inline-block mb-2">
+                    <span className="text-[11px] font-bold text-amber-900 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg inline-block mb-2">
                       {b.basis}
                     </span>
                   </div>
                   <p className="text-xs text-slate-500 mt-2">
-                    {t('cutLabel')} <strong className="text-slate-700">{b.cut}</strong>
+                    {t('cutLabel')} <strong className="text-slate-800">{b.cut}</strong>
                   </p>
                 </div>
               );

@@ -41,7 +41,7 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
             <button
               type="button"
               onClick={onOpenGuide}
-              className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 focus:outline-none focus-visible:underline"
+              className="text-xs font-bold text-amber-900 hover:text-amber-950 focus:outline-none focus-visible:underline"
             >
               How to measure
             </button>
@@ -63,7 +63,7 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
       )}
 
       {/* Dual Input: Numeric Box + Live Range Slider */}
-      <div className={`relative rounded-2xl border min-h-[50px] ${isOutOfRange ? 'border-amber-400 bg-amber-50/30' : 'border-slate-300 bg-white'} focus-within:border-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 transition overflow-hidden flex items-center shadow-sm`}>
+      <div className={`relative rounded-2xl border min-h-[50px] ${isOutOfRange ? 'border-amber-400 bg-amber-50/30' : 'border-slate-300 bg-white'} focus-within:border-amber-500 focus-within:ring-2 focus-within:ring-amber-500 focus-within:ring-offset-2 transition overflow-hidden flex items-center shadow-sm`}>
         <input
           id={id}
           type="number"
@@ -81,7 +81,7 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
           placeholder={`e.g. ${unit === 'in' ? '39.0' : '99'}`}
         />
         <div className="flex items-center space-x-2 pr-4">
-          <span className="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded uppercase tracking-wider">
+          <span className="text-xs font-mono font-bold text-amber-950 bg-amber-50 border border-amber-300/80 px-2 py-0.5 rounded uppercase tracking-wider">
             {unit}
           </span>
         </div>
@@ -92,7 +92,7 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
         <div className="space-y-1.5 pt-1 px-1">
           <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 font-semibold">
             <span>{min} {unit}</span>
-            <span className="text-indigo-700 font-bold bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-full text-[11px]">
+            <span className="text-amber-950 font-bold bg-amber-50 border border-amber-300/80 px-2.5 py-0.5 rounded-full text-[11px]">
               Drag to adjust: {value} {unit}
             </span>
             <span>{max} {unit}</span>
@@ -104,7 +104,7 @@ export const MeasurementInput: React.FC<MeasurementInputProps> = ({
             step="0.5"
             value={numericVal}
             onChange={(e) => onChange(parseFloat(e.target.value))}
-            className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
+            className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             aria-label={`${label} slider`}
           />
         </div>

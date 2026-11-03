@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../../lib/i18n/LanguageContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { BrandLogo } from '../brand/BrandLogo';
 
 export interface ConsumerNavbarProps {
   unit: 'in' | 'cm';
@@ -21,55 +22,36 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
   const { t } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all select-none">
-      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between gap-4">
-        {/* Brand Logo & Tagline */}
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-amber-900/10 shadow-sm transition-all select-none">
+      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 h-18 py-2.5 flex items-center justify-between gap-4">
+        {/* Brand Logo & Couture Emblem */}
         <div className="flex items-center space-x-3">
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-800 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
-              </svg>
-            </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <span className="text-xl font-black tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
-                  FitMatch
-                </span>
-                <span className="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 py-0.5 rounded-full">
-                  {t('brandTag')}
-                </span>
-              </div>
-              <p className="hidden md:block text-xs text-slate-500 font-medium">
-                {t('brandSub')}
-              </p>
-            </div>
-          </Link>
+          <BrandLogo size="md" variant="horizontal" />
         </div>
 
         {/* Center Navigation Links */}
-        <nav className="hidden lg:flex items-center space-x-7 text-xs font-bold text-slate-600">
-          <a href="#sizing-engine" className="hover:text-indigo-600 transition-colors py-1">
+        <nav className="hidden lg:flex items-center space-x-7 text-xs font-bold text-slate-700 tracking-wide">
+          <a href="#sizing-engine" className="hover:text-amber-800 transition-colors py-1">
             {t('navSizing')}
           </a>
           <button
             type="button"
             onClick={onOpenGuide}
-            className="hover:text-indigo-600 transition-colors py-1 flex items-center space-x-1.5"
+            className="hover:text-amber-800 transition-colors py-1 flex items-center space-x-1.5"
           >
             <span>{t('navGuides')}</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           </button>
-          <a href="#supported-brands" className="hover:text-indigo-600 transition-colors py-1">
+          <a href="#supported-brands" className="hover:text-amber-800 transition-colors py-1">
             {t('navBrands')}
           </a>
           <button
             type="button"
             onClick={onOpenPrivacy}
-            className="hover:text-indigo-600 transition-colors py-1 flex items-center space-x-1.5"
+            className="hover:text-amber-800 transition-colors py-1 flex items-center space-x-1.5"
           >
             <span>{t('navPrivacy')}</span>
-            <span className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold">
+            <span className="text-[10px] text-emerald-800 bg-emerald-50 border border-emerald-300/60 px-2 py-0.5 rounded font-bold">
               {t('verifiedBadge')}
             </span>
           </button>
@@ -86,7 +68,7 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
               type="button"
               onClick={() => unit !== 'in' && onUnitToggle()}
               className={`px-3 py-1.5 rounded-lg transition min-h-[34px] ${
-                unit === 'in' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                unit === 'in' ? 'bg-white text-amber-950 font-extrabold shadow-sm border border-amber-900/10' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               IN
@@ -95,18 +77,18 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
               type="button"
               onClick={() => unit !== 'cm' && onUnitToggle()}
               className={`px-3 py-1.5 rounded-lg transition min-h-[34px] ${
-                unit === 'cm' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                unit === 'cm' ? 'bg-white text-amber-950 font-extrabold shadow-sm border border-amber-900/10' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               CM
             </button>
           </div>
 
-          {/* Interactive Guide Quick Button */}
+          {/* How to Measure Quick Modal Button */}
           <button
             type="button"
             onClick={onOpenGuide}
-            className="text-xs bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold px-3.5 py-2 rounded-xl transition min-h-[38px] flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-indigo-600"
+            className="text-xs bg-amber-50/80 hover:bg-amber-100/90 text-amber-950 border border-amber-300/60 font-bold px-3.5 py-2 rounded-xl transition min-h-[38px] flex items-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-amber-500"
           >
             <span>📏</span>
             <span className="hidden sm:inline">{t('howToMeasureBtn')}</span>
@@ -126,7 +108,7 @@ export const ConsumerNavbar: React.FC<ConsumerNavbarProps> = ({
           {/* Operator Portal Link */}
           <Link
             href="/admin"
-            className="text-xs font-bold text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-xl transition whitespace-nowrap hidden xl:inline-block bg-slate-50 border border-slate-200 hover:bg-slate-100"
+            className="text-xs font-bold text-slate-700 hover:text-amber-900 px-3.5 py-2 rounded-xl transition whitespace-nowrap hidden xl:inline-block bg-slate-50 border border-slate-200 hover:bg-amber-50/50"
           >
             {t('operatorPortal')}
           </Link>

@@ -460,3 +460,4 @@ export function getTranslation(lang: LanguageCode, key: string): string {
   const dict = translations[lang] || translations.en;
   return dict[key] || translations.en[key] || key;
 }
+

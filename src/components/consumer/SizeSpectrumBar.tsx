@@ -92,3 +92,4 @@ export const SizeSpectrumBar: React.FC<SizeSpectrumBarProps> = ({
     </div>
   );
 };
+

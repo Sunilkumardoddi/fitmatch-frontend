@@ -25,6 +25,27 @@ const config: Config = {
           roomy: '#d97706',
           tight: '#dc2626',
         },
+        couture: {
+          noir: '#08090D',
+          obsidian: '#10121A',
+          card: '#161924',
+          charcoal: '#202433',
+          border: '#2C3042',
+          gold: '#D4AF37',
+          'gold-light': '#F7E7C4',
+          'gold-dark': '#8C6515',
+          champagne: '#F5EBD7',
+          cashmere: '#FAF9F6',
+          emerald: '#0B4F3A',
+          burgundy: '#5B1522',
+        },
+      },
+      fontFamily: {
+        serif: ['Didot', 'Bodoni MT', 'Cinzel', 'Playfair Display', 'serif'],
+      },
+      boxShadow: {
+        'gold-glow': '0 0 25px -5px rgba(212, 175, 55, 0.25)',
+        'noir-depth': '0 20px 40px -15px rgba(0, 0, 0, 0.7)',
       },
       borderRadius: {
         lg: 'var(--radius-lg, 0.75rem)',
