@@ -25,14 +25,13 @@ export default function ConsumerHomePage() {
   const [showDetails, setShowDetails] = useState(true);
   const [feedbackState, setFeedbackState] = useState<'NONE' | 'ADJUSTMENT_NEEDED' | 'SUBMITTED'>('NONE');
   const [adjustmentFeedback, setAdjustmentFeedback] = useState<string>('');
-  const [activeShowcaseTab, setActiveShowcaseTab] = useState<'BODY' | 'GARMENT'>('BODY');
 
   const brands = [
     { slug: 'snitch', name: 'Snitch', basis: 'Garment Dimension Basis', cut: 'Modern Slim / Tailored' },
     { slug: 'the-souled-store', name: 'The Souled Store', basis: 'Garment Dimension Basis', cut: 'Relaxed & Oversized' },
     { slug: 'allen-solly', name: 'Allen Solly', basis: 'Dual Body & Garment Basis', cut: 'Classic Executive' },
     { slug: 'bewakoof', name: 'Bewakoof', basis: 'Garment Dimension Basis', cut: 'Comfort Casual' },
-    { slug: 'fabindia', name: 'Fabindia', basis: 'Body Basis + 6" Generous Ease', cut: 'Artisanal Ethnic' },
+    { slug: 'fabindia', name: 'Fabindia', basis: 'Body Basis + 6" Ease', cut: 'Artisanal Ethnic' },
     { slug: 'rare-rabbit', name: 'Rare Rabbit', basis: 'Garment Dimension Basis', cut: 'European Tailored' },
   ];
 
@@ -89,7 +88,7 @@ export default function ConsumerHomePage() {
 
   return (
     <div className="w-full min-h-screen bg-slate-50 flex flex-col text-slate-900">
-      {/* 1. Full-Width Sticky Navigation Bar */}
+      {/* 1. Full-Width Sticky Top Navigation Bar */}
       <ConsumerNavbar
         unit={unit}
         onUnitToggle={toggleUnit}
@@ -97,39 +96,39 @@ export default function ConsumerHomePage() {
         onOpenPrivacy={() => setIsPrivacyOpen(true)}
       />
 
-      {/* 2. Full-Width Hero Section */}
-      <section className="relative w-full bg-gradient-to-b from-[#0A0F1D] via-[#111827] to-[#1E1B4B] text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
+      {/* 2. Fluid Full-Viewport Hero Section */}
+      <section className="relative w-full bg-gradient-to-b from-[#0A0F1D] via-[#111827] to-[#1E1B4B] text-white py-14 sm:py-20 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none">
         {/* Subtle Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-indigo-600/10 blur-3xl pointer-events-none rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-indigo-600/10 blur-3xl pointer-events-none rounded-full" />
 
-        <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 xl:gap-20">
           {/* Hero Left Content */}
-          <div className="max-w-2xl space-y-6 text-center lg:text-left">
-            <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2">
+          <div className="flex-1 space-y-6 text-center lg:text-left">
+            <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
               <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider flex items-center space-x-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Zero Photos &bull; Pure Deterministic Math</span>
               </span>
-              <span className="text-slate-400 text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-full">
+              <span className="text-slate-300 text-xs bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
                 DPDP Act 2023 Compliant
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight sm:leading-none">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-tight">
               Indian Apparel Sizing. <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-indigo-300 via-indigo-100 to-emerald-300 bg-clip-text text-transparent">
                 Calibrated to Your Body.
               </span>
             </h1>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl mx-auto lg:mx-0">
               No guessing sizes. No uploading photos. FitMatch maps your body tape measurements against verified garment specifications from India's top fashion brands with functional design ease.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
               <a
                 href="#sizing-engine"
-                className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-indigo-600/30 transition-all text-xs sm:text-sm min-h-[48px] flex items-center space-x-2"
+                className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-4 rounded-xl shadow-lg shadow-indigo-600/30 transition-all text-sm min-h-[48px] flex items-center space-x-2"
               >
                 <span>Calculate My Size</span>
                 <span>&darr;</span>
@@ -137,7 +136,7 @@ export default function ConsumerHomePage() {
               <button
                 type="button"
                 onClick={() => setIsGuideOpen(true)}
-                className="bg-white/10 hover:bg-white/20 text-white font-bold px-5 py-3.5 rounded-xl border border-white/20 transition-all text-xs sm:text-sm min-h-[48px] flex items-center space-x-2"
+                className="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-xl border border-white/20 transition-all text-sm min-h-[48px] flex items-center space-x-2"
               >
                 <span>📏 Interactive Visual Guide</span>
               </button>
@@ -145,12 +144,12 @@ export default function ConsumerHomePage() {
           </div>
 
           {/* Hero Right: Live Interactive Quick-Match Card */}
-          <div className="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-2xl text-white space-y-4">
+          <div className="w-full lg:w-[480px] xl:w-[540px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-7 shadow-2xl text-white space-y-5 flex-shrink-0">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <span className="text-xs font-bold uppercase tracking-wider text-indigo-300">
                 Live Calibrated Match
               </span>
-              <span className="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2.5 py-0.5 rounded-full font-bold">
+              <span className="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-3 py-1 rounded-full font-bold">
                 Snitch Casual Shirt
               </span>
             </div>
@@ -158,20 +157,20 @@ export default function ConsumerHomePage() {
             <div className="flex items-baseline justify-between">
               <div>
                 <span className="text-xs text-slate-300 block">Recommended Size</span>
-                <span className="text-5xl font-black text-white tracking-tight">
+                <span className="text-6xl font-black text-white tracking-tight">
                   {recommendation?.recommendedSize || 'L'}
                 </span>
               </div>
               <div className="text-right">
                 <span className="text-xs text-slate-300 block">Your Chest</span>
-                <span className="text-xl font-bold font-mono text-emerald-300">
+                <span className="text-2xl font-bold font-mono text-emerald-300">
                   {typeof chestVal === 'number' ? `${chestVal} ${unit}` : `-- ${unit}`}
                 </span>
               </div>
             </div>
 
-            <div className="bg-black/30 rounded-2xl p-3 border border-white/10 text-xs space-y-1">
-              <div className="flex justify-between text-slate-300 text-[11px]">
+            <div className="bg-black/30 rounded-2xl p-4 border border-white/10 text-xs space-y-1.5">
+              <div className="flex justify-between text-slate-300 text-xs">
                 <span>Garment Dimension:</span>
                 <span className="font-mono font-bold text-white">
                   {recommendation?.primaryMargins?.[0]
@@ -179,7 +178,7 @@ export default function ConsumerHomePage() {
                     : `42.0 ${unit}`}
                 </span>
               </div>
-              <div className="flex justify-between text-emerald-400 text-[11px] font-semibold">
+              <div className="flex justify-between text-emerald-400 text-xs font-semibold">
                 <span>Ergonomic Ease:</span>
                 <span className="font-mono">
                   {recommendation?.primaryMargins?.[0]
@@ -190,15 +189,15 @@ export default function ConsumerHomePage() {
             </div>
 
             {/* Live Fast Presets */}
-            <div className="space-y-1.5 pt-1">
-              <span className="text-[11px] text-slate-300 block font-semibold">Try Fast Chest Presets:</span>
-              <div className="grid grid-cols-4 gap-1.5">
+            <div className="space-y-2 pt-1">
+              <span className="text-xs text-slate-300 block font-semibold">Try Fast Chest Presets:</span>
+              <div className="grid grid-cols-4 gap-2">
                 {[38.0, 39.0, 40.0, 42.0].map((val) => (
                   <button
                     key={val}
                     type="button"
                     onClick={() => handleApplyPreset(unit === 'in' ? val : Math.round(val * 2.54))}
-                    className="py-1.5 px-2 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-bold text-center border border-white/15 transition min-h-[36px]"
+                    className="py-2 px-2.5 bg-white/10 hover:bg-white/20 rounded-xl text-xs font-bold text-center border border-white/15 transition min-h-[40px]"
                   >
                     {unit === 'in' ? `${val}"` : `${Math.round(val * 2.54)}cm`}
                   </button>
@@ -209,35 +208,35 @@ export default function ConsumerHomePage() {
         </div>
 
         {/* Live Metrics Trust Strip */}
-        <div className="w-full max-w-7xl mx-auto mt-14 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center select-none">
+        <div className="w-full mt-14 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center select-none">
           <div>
-            <span className="block text-2xl sm:text-3xl font-black text-white">6 Brands</span>
-            <span className="text-xs text-slate-400">Verified Indian Retailers</span>
+            <span className="block text-2xl sm:text-4xl font-black text-white">6 Brands</span>
+            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">Verified Indian Retailers</span>
           </div>
           <div>
-            <span className="block text-2xl sm:text-3xl font-black text-emerald-400">0 Photos</span>
-            <span className="text-xs text-slate-400">DPDP Act Compliant</span>
+            <span className="block text-2xl sm:text-4xl font-black text-emerald-400">0 Photos</span>
+            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">DPDP Act Compliant</span>
           </div>
           <div>
-            <span className="block text-2xl sm:text-3xl font-black text-indigo-300">+2.0" to +6.0"</span>
-            <span className="text-xs text-slate-400">Calibrated Design Ease</span>
+            <span className="block text-2xl sm:text-4xl font-black text-indigo-300">+2.0" to +6.0"</span>
+            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">Calibrated Design Ease</span>
           </div>
           <div>
-            <span className="block text-2xl sm:text-3xl font-black text-white">&lt; 5 ms</span>
-            <span className="text-xs text-slate-400">Deterministic Engine</span>
+            <span className="block text-2xl sm:text-4xl font-black text-white">&lt; 5 ms</span>
+            <span className="text-xs sm:text-sm text-slate-400 mt-1 block">Deterministic Engine</span>
           </div>
         </div>
       </section>
 
-      {/* 3. Main Sizing Engine Canvas (Full Viewport Width Grid) */}
-      <main id="sizing-engine" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-slate-200 pb-4">
+      {/* 3. Fluid Full-Viewport Sizing Engine Canvas */}
+      <main id="sizing-engine" className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 space-y-10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-slate-200 pb-5">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-full">
-              Sizing Engine
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-full">
+              Interactive Fit Engine
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-2">
-              Interactive Fit Recommendation
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2.5">
+              Sizing Calculator & Ease Calibration
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
               Select your favorite brand, choose your garment silhouette, and enter your tape readings below.
@@ -247,21 +246,21 @@ export default function ConsumerHomePage() {
           <button
             type="button"
             onClick={toggleUnit}
-            className="text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-4 py-2 rounded-xl transition min-h-[44px] flex items-center space-x-2"
+            className="text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-5 py-2.5 rounded-xl transition min-h-[44px] flex items-center space-x-2"
           >
-            <span>Active Unit:</span>
-            <span className="font-mono bg-white px-2 py-0.5 rounded shadow-sm">
+            <span>Unit:</span>
+            <span className="font-mono bg-white px-2 py-0.5 rounded shadow-sm text-indigo-900 font-black">
               {unit.toUpperCase()}
             </span>
             <span>(Click to switch)</span>
           </button>
         </div>
 
-        {/* 12-Column Responsive Sizing Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* 12-Column Responsive Sizing Grid Spanning Full Width */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start w-full">
           {/* Left Column: Inputs & Interactive Visual Cut (5 cols) */}
-          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-6">
-            <h3 id="garment-input-heading" className="text-xs font-bold uppercase tracking-wider text-slate-600 pb-2 border-b border-slate-100 flex items-center justify-between">
+          <section aria-labelledby="garment-input-heading" className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <h3 id="garment-input-heading" className="text-xs font-bold uppercase tracking-wider text-slate-600 pb-3 border-b border-slate-100 flex items-center justify-between">
               <span>Step 1 &bull; Garment & Measurements</span>
               <span className="text-indigo-600 font-bold">Input Panel</span>
             </h3>
@@ -276,7 +275,7 @@ export default function ConsumerHomePage() {
                   id="brand-dropdown"
                   value={selectedBrand}
                   onChange={(e) => setSelectedBrand(e.target.value)}
-                  className="w-full text-xs font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-indigo-600 min-h-[48px] transition text-slate-900"
+                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-indigo-600 min-h-[48px] transition text-slate-900"
                 >
                   {brands.map((b) => (
                     <option key={b.slug} value={b.slug}>
@@ -295,7 +294,7 @@ export default function ConsumerHomePage() {
                   id="category-dropdown"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full text-xs font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-indigo-600 min-h-[48px] transition text-slate-900"
+                  className="w-full text-xs sm:text-sm font-bold border border-slate-300 rounded-xl p-3.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-indigo-600 min-h-[48px] transition text-slate-900"
                 >
                   <option value="SHIRT_CASUAL">Casual Shirt (Modern Slim: +3.0" Ease)</option>
                   <option value="SHIRT_FORMAL">Formal Dress Shirt (Classic Cut: +4.0" Ease)</option>
@@ -368,8 +367,8 @@ export default function ConsumerHomePage() {
           {/* Right Column: Sizing Recommendation Output & Visual Ease (7 cols) */}
           <section aria-labelledby="recommendation-heading" className="lg:col-span-7 space-y-6">
             {recommendation && !recommendation.isAbstention && recommendation.recommendedSize ? (
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-indigo-600 shadow-md space-y-6">
-                <div className="flex justify-between items-center pb-3 border-b border-slate-100">
+              <div className="bg-white rounded-3xl p-6 sm:p-9 border-2 border-indigo-600 shadow-md space-y-6">
+                <div className="flex justify-between items-center pb-4 border-b border-slate-100">
                   <SizeBadge
                     status="OPTIMAL"
                     showPercentage={false}
@@ -383,21 +382,21 @@ export default function ConsumerHomePage() {
                   <h3 id="recommendation-heading" className="text-xs uppercase font-bold tracking-wider text-slate-500">
                     Your Recommended Fit
                   </h3>
-                  <div className="flex flex-wrap items-baseline gap-4 mt-1">
-                    <span className="text-6xl font-black text-slate-900 tracking-tight">
+                  <div className="flex flex-wrap items-baseline gap-4 mt-2">
+                    <span className="text-6xl sm:text-7xl font-black text-slate-900 tracking-tight">
                       {recommendation.recommendedSize}
                     </span>
-                    <span className="text-sm font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-xl">
+                    <span className="text-sm font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-xl">
                       {preference} Fit Calibrated
                     </span>
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">
+                  <p className="text-xs text-slate-500 mt-1.5">
                     Mapped against {selectedBrand.toUpperCase()} published size specifications.
                   </p>
                 </div>
 
-                <div className="bg-indigo-50/80 border border-indigo-200 p-4 rounded-2xl text-xs text-slate-800 leading-relaxed space-y-1">
-                  <div className="font-bold text-indigo-950 text-sm">Why we recommend Size {recommendation.recommendedSize}:</div>
+                <div className="bg-indigo-50/80 border border-indigo-200 p-4 sm:p-5 rounded-2xl text-xs sm:text-sm text-slate-800 leading-relaxed space-y-1.5">
+                  <div className="font-bold text-indigo-950 text-sm sm:text-base">Why we recommend Size {recommendation.recommendedSize}:</div>
                   <p>{recommendation.explanation}</p>
                 </div>
 
@@ -438,7 +437,7 @@ export default function ConsumerHomePage() {
                       <button
                         type="button"
                         onClick={() => setFeedbackState('SUBMITTED')}
-                        className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition min-h-[44px] ${
+                        className={`text-xs font-bold px-4 py-2 rounded-xl border transition min-h-[44px] ${
                           feedbackState === 'SUBMITTED'
                             ? 'bg-emerald-600 text-white border-emerald-600'
                             : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -449,7 +448,7 @@ export default function ConsumerHomePage() {
                       <button
                         type="button"
                         onClick={() => setFeedbackState('ADJUSTMENT_NEEDED')}
-                        className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition min-h-[44px] ${
+                        className={`text-xs font-bold px-4 py-2 rounded-xl border transition min-h-[44px] ${
                           feedbackState === 'ADJUSTMENT_NEEDED'
                             ? 'bg-amber-600 text-white border-amber-600'
                             : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -461,7 +460,7 @@ export default function ConsumerHomePage() {
                   </div>
 
                   {feedbackState === 'ADJUSTMENT_NEEDED' && (
-                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl space-y-2 text-xs">
+                    <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2 text-xs">
                       <label htmlFor="feedback-input" className="font-bold text-amber-900 block">
                         What felt different?
                       </label>
@@ -472,12 +471,12 @@ export default function ConsumerHomePage() {
                           value={adjustmentFeedback}
                           onChange={(e) => setAdjustmentFeedback(e.target.value)}
                           placeholder="e.g., Felt tighter in shoulders than expected"
-                          className="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs"
+                          className="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-xs outline-none focus:ring-2 focus:ring-amber-500"
                         />
                         <button
                           type="button"
                           onClick={() => setFeedbackState('SUBMITTED')}
-                          className="bg-amber-600 text-white font-bold px-4 py-2 rounded-lg text-xs whitespace-nowrap min-h-[44px]"
+                          className="bg-amber-600 text-white font-bold px-5 py-2.5 rounded-lg text-xs whitespace-nowrap min-h-[44px]"
                         >
                           Submit
                         </button>
@@ -494,20 +493,20 @@ export default function ConsumerHomePage() {
               </div>
             ) : (
               /* Helpful Abstention Guidance */
-              <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm space-y-4 text-center">
-                <div className="w-14 h-14 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-center mx-auto text-amber-600 text-2xl">
+              <div className="bg-white rounded-3xl p-10 border border-slate-200 shadow-sm space-y-5 text-center">
+                <div className="w-16 h-16 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-center mx-auto text-amber-600 text-3xl">
                   📏
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-xl font-bold text-slate-900">
                   Enter Your Chest Measurement to Begin
                 </h3>
-                <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto leading-relaxed">
                   Chest circumference is the primary biological anchor for upper-body garments. Please enter your measurement or use our guided measurement wizard.
                 </p>
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-3 rounded-xl transition text-xs shadow-sm min-h-[44px]"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3.5 rounded-xl transition text-xs sm:text-sm shadow-sm min-h-[44px]"
                 >
                   Open Visual Guide
                 </button>
@@ -516,50 +515,26 @@ export default function ConsumerHomePage() {
           </section>
         </div>
 
-        {/* 4. Interactive Visual Measurement Showcase Section */}
-        <section id="visual-guides" className="w-full bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-800 space-y-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-400 bg-indigo-950/80 border border-indigo-800 px-3 py-1 rounded-full">
-                Interactive Visual Guidance
-              </span>
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mt-2">
-                Anatomical & Garment Guidelines
-              </h3>
-              <p className="text-xs text-slate-400 mt-1">
-                Explore the exact guidelines used by professional tailors and pattern-makers.
-              </p>
-            </div>
-
-            {/* Showcase Tab Switcher */}
-            <div className="flex bg-slate-800 p-1 rounded-xl text-xs font-bold">
-              <button
-                type="button"
-                onClick={() => setActiveShowcaseTab('BODY')}
-                className={`px-4 py-2 rounded-lg transition min-h-[40px] ${
-                  activeShowcaseTab === 'BODY'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                🧍 Body Tape Method
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveShowcaseTab('GARMENT')}
-                className={`px-4 py-2 rounded-lg transition min-h-[40px] ${
-                  activeShowcaseTab === 'GARMENT'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                👕 Garment Flat Ruler
-              </button>
-            </div>
+        {/* 4. Fluid Full-Width Interactive Visual Measurement Showcase Section */}
+        <section id="visual-guides" className="w-full bg-slate-900 text-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 space-y-8">
+          <div className="border-b border-slate-800 pb-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-400 bg-indigo-950/80 border border-indigo-800 px-3.5 py-1.5 rounded-full">
+              Interactive Visual Guidance
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-3">
+              Anatomical & Garment Guidelines
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-400 mt-1">
+              Explore the exact guidelines used by professional tailors and pattern-makers. Both methods deliver calibrated chest readings without needing a camera.
+            </p>
           </div>
 
-          <div>
-            {activeShowcaseTab === 'BODY' ? (
+          {/* Side-by-Side Dual Interactive Visual Guides on Wide Screens */}
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full">
+            <div className="space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-300 block">
+                Method A &bull; Body Tape Measurement
+              </span>
               <BodyMeasurementVisualGuide
                 activeZone="CHEST"
                 chestVal={chestVal}
@@ -567,23 +542,28 @@ export default function ConsumerHomePage() {
                 unit={unit}
                 interactive={true}
               />
-            ) : (
+            </div>
+
+            <div className="space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-300 block">
+                Method B &bull; Flat Garment Pit-to-Pit Ruler
+              </span>
               <GarmentFlatVisualGuide
                 pitToPitVal={unit === 'in' ? 21.0 : 53.0}
                 unit={unit}
                 interactive={true}
               />
-            )}
+            </div>
           </div>
         </section>
 
-        {/* 5. Supported Retail Brands Directory */}
+        {/* 5. Fluid Supported Retail Brands Directory Across Full Width */}
         <section id="supported-brands" className="w-full space-y-6">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-full">
+          <div className="text-center max-w-3xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-full">
               Brand Directory
             </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            <h3 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
               Calibrated for India's Top Fashion Labels
             </h3>
             <p className="text-xs sm:text-sm text-slate-500">
@@ -591,7 +571,8 @@ export default function ConsumerHomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* 6-Column Grid Spanning Full Viewport */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 w-full">
             {brands.map((b) => {
               const isSelected = selectedBrand === b.slug;
               return (
@@ -602,25 +583,27 @@ export default function ConsumerHomePage() {
                     const el = document.getElementById('sizing-engine');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className={`p-5 rounded-2xl border transition-all cursor-pointer ${
+                  className={`p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? 'bg-indigo-50/90 border-indigo-500 shadow-md ring-2 ring-indigo-500/20'
                       : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-sm'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-black text-slate-900 text-base">{b.name}</h4>
-                    {isSelected && (
-                      <span className="text-[10px] font-bold bg-indigo-600 text-white px-2 py-0.5 rounded-full">
-                        Active
-                      </span>
-                    )}
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-black text-slate-900 text-base">{b.name}</h4>
+                      {isSelected && (
+                        <span className="text-[10px] font-bold bg-indigo-600 text-white px-2 py-0.5 rounded-full">
+                          Active
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-[11px] font-bold text-indigo-700 bg-slate-50 border border-indigo-200 px-2.5 py-1 rounded-lg inline-block mb-2">
+                      {b.basis}
+                    </span>
                   </div>
-                  <span className="text-xs font-bold text-indigo-700 bg-white border border-indigo-200 px-2.5 py-1 rounded-lg inline-block mb-2">
-                    {b.basis}
-                  </span>
-                  <p className="text-xs text-slate-500">
-                    Typical cut: <strong className="text-slate-700">{b.cut}</strong>
+                  <p className="text-xs text-slate-500 mt-2">
+                    Cut: <strong className="text-slate-700">{b.cut}</strong>
                   </p>
                 </div>
               );
