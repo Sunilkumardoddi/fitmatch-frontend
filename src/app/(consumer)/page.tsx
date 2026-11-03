@@ -10,6 +10,7 @@ import { GuidedMeasurementModal } from '../../components/ui/GuidedMeasurementMod
 import { GarmentCutVisualizer } from '../../components/consumer/GarmentCutVisualizer';
 import { BodyMeasurementVisualGuide } from '../../components/consumer/BodyMeasurementVisualGuide';
 import { GarmentFlatVisualGuide } from '../../components/consumer/GarmentFlatVisualGuide';
+import { SizeSpectrumBar } from '../../components/consumer/SizeSpectrumBar';
 import { ConsumerNavbar } from '../../components/consumer/ConsumerNavbar';
 
 export default function ConsumerHomePage() {
@@ -394,6 +395,13 @@ export default function ConsumerHomePage() {
                     Mapped against {selectedBrand.toUpperCase()} published size specifications.
                   </p>
                 </div>
+
+                {/* Visual Brand Size Spectrum & Ease Curve */}
+                <SizeSpectrumBar
+                  recommendedSize={recommendation.recommendedSize}
+                  brandName={selectedBrand.charAt(0).toUpperCase() + selectedBrand.slice(1)}
+                  unit={unit}
+                />
 
                 <div className="bg-indigo-50/80 border border-indigo-200 p-4 sm:p-5 rounded-2xl text-xs sm:text-sm text-slate-800 leading-relaxed space-y-1.5">
                   <div className="font-bold text-indigo-950 text-sm sm:text-base">Why we recommend Size {recommendation.recommendedSize}:</div>
