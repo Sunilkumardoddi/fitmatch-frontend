@@ -3,9 +3,10 @@ import React from 'react';
 export interface SizeBadgeProps {
   status: 'OPTIMAL' | 'SNUG' | 'ROOMY' | 'BORDERLINE' | 'UNWEARABLE';
   confidence?: number;
+  showPercentage?: boolean;
 }
 
-export const SizeBadge: React.FC<SizeBadgeProps> = ({ status, confidence }) => {
+export const SizeBadge: React.FC<SizeBadgeProps> = ({ status, confidence, showPercentage = false }) => {
   const styles = {
     OPTIMAL: 'bg-emerald-50 text-emerald-800 border-emerald-300',
     SNUG: 'bg-blue-50 text-blue-800 border-blue-300',
@@ -33,12 +34,12 @@ export const SizeBadge: React.FC<SizeBadgeProps> = ({ status, confidence }) => {
   return (
     <div
       role="status"
-      aria-label={`${labels}${confidence !== undefined ? `, Confidence: ${Math.round(confidence * 100)}%` : ''}`}
+      aria-label={`${labels}${showPercentage && confidence !== undefined ? `, Confidence: ${Math.round(confidence * 100)}%` : ''}`}
       className={`inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold border ${styles} select-none`}
     >
       <span aria-hidden="true" className="font-mono text-xs">{icons}</span>
       <span>{labels}</span>
-      {confidence !== undefined && (
+      {showPercentage && confidence !== undefined && (
         <span className="text-xs font-semibold opacity-80 font-mono">
           ({Math.round(confidence * 100)}%)
         </span>

@@ -53,7 +53,7 @@ export const GuidedMeasurementModal: React.FC<GuidedMeasurementModalProps> = ({
               Approachable Onboarding
             </span>
             <h2 id="guide-title" className="text-lg font-bold text-slate-900 mt-2">
-              How to Measure for an Exact Fit
+              How to Measure Your Size
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">Choose the method that works best for you. No camera or photos required.</p>
           </div>

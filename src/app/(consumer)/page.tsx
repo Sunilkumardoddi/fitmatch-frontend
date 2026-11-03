@@ -19,7 +19,9 @@ export default function ConsumerHomePage() {
   const [recommendation, setRecommendation] = useState<SizeRecommendationResponse | null>(null);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
-  const [feedbackState, setFeedbackState] = useState<'NONE' | 'SUBMITTED'>('NONE');
+  const [showDetails, setShowDetails] = useState(false);
+  const [feedbackState, setFeedbackState] = useState<'NONE' | 'ADJUSTMENT_NEEDED' | 'SUBMITTED'>('NONE');
+  const [adjustmentFeedback, setAdjustmentFeedback] = useState<string>('');
 
   const brands = [
     { slug: 'snitch', name: 'Snitch (Garment Dimension Basis)' },
@@ -82,15 +84,15 @@ export default function ConsumerHomePage() {
         <div className="space-y-2 max-w-xl">
           <div className="flex items-center space-x-2">
             <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-              Exact Fit &bull; Zero Photos
+              Body-Neutral Sizing &bull; Zero Photos
             </span>
             <span className="text-slate-300 text-xs">&bull; DPDP Act 2023 Compliant</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-            FitMatch Sizing Intelligence
+            Find your perfect fit.
           </h1>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            Deterministic anthropometric size matching for Indian apparel. We map your tape measurements directly against published manufacturer garment dimensions.
+            Discover the size that fits you across your favorite brands. Better fit. Less guesswork. We map your dimensions against published manufacturer garment specifications.
           </p>
         </div>
 
@@ -198,9 +200,9 @@ export default function ConsumerHomePage() {
               <div className="grid grid-cols-3 gap-2">
                 {(['SNUG', 'REGULAR', 'RELAXED'] as const).map((pref) => {
                   const labels = {
-                    SNUG: 'Snug (-1")',
-                    REGULAR: 'Regular (0")',
-                    RELAXED: 'Relaxed (+2")',
+                    SNUG: 'Snug',
+                    REGULAR: 'Regular',
+                    RELAXED: 'Relaxed',
                   };
                   const isSelected = preference === pref;
                   return (
@@ -208,7 +210,7 @@ export default function ConsumerHomePage() {
                       key={pref}
                       type="button"
                       onClick={() => setPreference(pref)}
-                      className={`py-3 px-2 text-xs font-bold rounded-xl border transition min-h-[48px] flex items-center justify-center ${
+                      className={`py-3 px-2 text-xs font-bold rounded-xl border transition min-h-[48px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-indigo-600 ${
                         isSelected
                           ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
                           : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -230,63 +232,102 @@ export default function ConsumerHomePage() {
               <div className="flex justify-between items-center">
                 <SizeBadge
                   status="OPTIMAL"
-                  confidence={recommendation.confidenceScore}
+                  showPercentage={false}
                 />
-                <span className="text-xs font-mono text-slate-500">
-                  ID: {recommendation.recommendationId.slice(0, 16)}
+                <span className="text-xs text-slate-500 font-medium">
+                  {selectedBrand.charAt(0).toUpperCase() + selectedBrand.slice(1)} Size Spectrum
                 </span>
               </div>
 
               <div>
                 <h2 id="recommendation-heading" className="text-xs uppercase font-bold tracking-wider text-slate-500">
-                  Recommended Size
+                  Your recommended size
                 </h2>
                 <div className="flex flex-wrap items-baseline gap-3 mt-1">
                   <span className="text-5xl font-black text-slate-900 tracking-tight">
-                    SIZE {recommendation.recommendedSize}
+                    {recommendation.recommendedSize}
                   </span>
-                  {recommendation.runnerUpSize && (
-                    <span className="text-xs text-slate-600 font-semibold bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg">
-                      Runner-up alternative: Size {recommendation.runnerUpSize}
-                    </span>
-                  )}
                 </div>
+                <p className="text-xs text-slate-500 mt-1">
+                  Based on your measurements and this brand's available sizing information.
+                </p>
               </div>
 
               <div className="bg-indigo-50/70 border border-indigo-200/80 p-4 rounded-2xl text-xs text-slate-800 leading-relaxed space-y-1">
-                <div className="font-bold text-indigo-900">Why this size:</div>
+                <div className="font-bold text-indigo-900">Why we recommend {recommendation.recommendedSize}:</div>
                 <p>{recommendation.explanation}</p>
               </div>
 
+              {/* Progressive Disclosure Toggle (UI_UX_INTERACTION_STANDARD.md Rule 3 & §9.6) */}
               {recommendation.primaryMargins.length > 0 && (
-                <FitVisualizer
-                  margin={recommendation.primaryMargins[0]}
-                  unit={unit}
-                  dimensionLabel="Chest"
-                />
+                <div className="space-y-3 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setShowDetails(!showDetails)}
+                    className="text-xs font-bold text-indigo-700 hover:text-indigo-900 flex items-center space-x-1 py-1 focus-visible:ring-2 focus-visible:ring-indigo-600 rounded"
+                  >
+                    <span>{showDetails ? 'Hide measurement details ▴' : 'View measurement details ▾'}</span>
+                  </button>
+
+                  {showDetails && (
+                    <div className="animate-in fade-in duration-200 pt-1">
+                      <FitVisualizer
+                        margin={recommendation.primaryMargins[0]}
+                        unit={unit}
+                        dimensionLabel="Chest"
+                      />
+                    </div>
+                  )}
+                </div>
               )}
 
-              {/* Fit Feedback Section */}
-              <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <span className="text-xs font-semibold text-slate-700">
-                  {feedbackState === 'SUBMITTED' ? '✓ Thank you! Your feedback improves future recommendations.' : 'How does this size match your expectations?'}
-                </span>
-                {feedbackState === 'NONE' && (
-                  <div className="flex space-x-2">
-                    <button
-                      type="button"
-                      onClick={() => setFeedbackState('SUBMITTED')}
-                      className="text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-2 rounded-xl border border-slate-200 transition min-h-[44px]"
-                    >
-                      👍 Just Right
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setFeedbackState('SUBMITTED')}
-                      className="text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-2 rounded-xl border border-slate-200 transition min-h-[44px]"
-                    >
-                      👎 Needs Adjustment
-                    </button>
+              {/* Fit Feedback Section (UI_UX_INTERACTION_STANDARD.md §9.8) */}
+              <div className="pt-4 border-t border-slate-200 space-y-3">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <span className="text-xs font-semibold text-slate-700">
+                    {feedbackState === 'SUBMITTED'
+                      ? '✓ Thank you! Your feedback helps calibrate future recommendations.'
+                      : 'Does this size feel right?'}
+                  </span>
+                  {feedbackState === 'NONE' && (
+                    <div className="flex space-x-2">
+                      <button
+                        type="button"
+                        onClick={() => setFeedbackState('SUBMITTED')}
+                        className="text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 px-3.5 py-2 rounded-xl border border-slate-200 transition min-h-[44px] focus-visible:ring-2 focus-visible:ring-indigo-600"
+                      >
+                        Looks good
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setFeedbackState('ADJUSTMENT_NEEDED')}
+                        className="text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 px-3.5 py-2 rounded-xl border border-slate-200 transition min-h-[44px] focus-visible:ring-2 focus-visible:ring-indigo-600"
+                      >
+                        Not quite
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Follow-up for "Not quite" per §9.8 */}
+                {feedbackState === 'ADJUSTMENT_NEEDED' && (
+                  <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2 animate-in fade-in duration-150">
+                    <span className="text-xs font-bold text-slate-800 block">Tell us what feels off:</span>
+                    <div className="flex flex-wrap gap-2">
+                      {['Too tight', 'Too loose', 'Too short', 'Too long', 'Something else'].map((reason) => (
+                        <button
+                          key={reason}
+                          type="button"
+                          onClick={() => {
+                            setAdjustmentFeedback(reason);
+                            setFeedbackState('SUBMITTED');
+                          }}
+                          className="text-xs bg-white hover:bg-indigo-50 hover:text-indigo-700 text-slate-700 font-medium px-3 py-1.5 rounded-lg border border-slate-300 transition min-h-[36px]"
+                        >
+                          {reason}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
