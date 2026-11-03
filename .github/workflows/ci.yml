@@ -1,0 +1,41 @@
+name: FitMatch Frontend CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate-frontend:
+    name: Frontend Type-Check & Production Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Type Check Next.js Application
+        run: npm run check
+
+      - name: Next.js Production Build Verification
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: https://fitmatch-api-demo.onrender.com/api/v1
+          NEXT_PUBLIC_APP_ENV: production
+
+      - name: Secret Hygiene Check
+        run: |
+          if grep -rEi '(secret|apiKey|api_key|password)\s*[:=]\s*["''][^"'']{8,}["'']' src/ | grep -v 'process.env'; then
+            echo "::error::Hardcoded credentials detected in frontend source files."
+            exit 1
+          fi
+          echo "Secret hygiene scan passed: zero hardcoded credentials."
